@@ -3,6 +3,9 @@ import Home from "./pages/user/home";
 import { ROUTERS } from "./utils/router";
 import MasterLayout from "./pages/user/theme/masterLayout";
 import Product from "./pages/user/product";
+import Shop from "./pages/user/shop";
+import Blog from "./pages/user/blog";
+import Contact from "./pages/user/contact";
 
 
 const renderUserRouter = () =>{
@@ -12,9 +15,21 @@ const renderUserRouter = () =>{
             component: <Home/>
         },
         {
+            path: ROUTERS.USER.SHOP,
+            component: <Shop/>
+        },
+        {
+            path: ROUTERS.USER.BLOG,
+            component: <Blog/>
+        },
+        {
+            path: ROUTERS.USER.CONTACT,
+            component: <Contact/>
+        },
+        {
             path: ROUTERS.USER.PRODUCT,
             component: <Product/>
-        }
+        },
     ]
 
     return (

@@ -1,4 +1,5 @@
 import { memo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import "../header/style.scss"
 import { AiOutlineHeart, AiOutlineDown, AiOutlineShopping } from "react-icons/ai";
 import logo from "../../../../assets/imgs/logo.png";
@@ -20,6 +21,29 @@ const Header = () =>{
         {
             name: 'Pages',
             path: ROUTERS.USER.HOME,
+            isShowSubMenu: false,
+            child:[
+                {
+                    name: 'About Us',
+                    path: ROUTERS.USER.SHOP,
+                },
+                {
+                    name: 'Shop Detail',
+                    path: ROUTERS.USER.HOME,
+                },
+                {
+                    name: 'Shopping Cart',
+                    path: ROUTERS.USER.HOME,
+                },
+                {
+                    name: 'Check Out',
+                    path: ROUTERS.USER.HOME,
+                },
+                {
+                    name: 'Blog Detail',
+                    path: ROUTERS.USER.HOME,
+                }
+            ]
         },
         {
             name: 'Blog',
@@ -75,7 +99,33 @@ const Header = () =>{
                     <div className="col-lg-6 col-md-6">
                         <nav className="header__menu mobile-menu">
                             <ul>
-                                <li className="active"><a href="./index.html">Home</a></li>
+
+                                {
+                                    menus?.map((menu, menuKey) =>(
+                                        <li key={menuKey} className={menuKey === 0 ? "active" : ""}> 
+                                            <Link to={menu?.path}>
+                                                {menu?.name}
+                                            </Link>
+
+                                            {
+                                                menu.child && (
+                                                    <ul className="dropdown">
+                                                        {
+                                                            menu.child.map((childItem, childKey) =>(
+                                                                <li key={`${menuKey} - ${childKey}`}>
+                                                                    <Link to={childItem.path}>
+                                                                        {childItem.name}
+                                                                    </Link>
+                                                                </li>
+                                                            ))
+                                                        }
+                                                    </ul>
+                                                )
+                                            }
+                                        </li>
+                                    ))
+                                }
+                                {/* <li className="active"><a href="./index.html">Home</a></li>
                                 <li><a href="./shop.html">Shop</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul className="dropdown">
@@ -87,7 +137,7 @@ const Header = () =>{
                                     </ul>
                                 </li>
                                 <li><a href="./blog.html">Blog</a></li>
-                                <li><a href="./contact.html">Contacts</a></li>
+                                <li><a href="./contact.html">Contacts</a></li> */}
                             </ul>
                         </nav>
                     </div>
