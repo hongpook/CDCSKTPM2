@@ -8,6 +8,7 @@
 
   iframe {
     width: 100%;
+    height: 450px;
   }
 }
 
@@ -43,7 +44,7 @@
       }
 
       h4 {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-weight: 700;
         margin-bottom: 8px;
       }

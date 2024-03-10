@@ -5,7 +5,7 @@ export const ROUTERS = {
         BLOG: "/blog",
         CONTACT: "/contact",
         PRODUCT: "/product",
-
+        ABOUT_US: "/aboutUs"
     }
 }
 

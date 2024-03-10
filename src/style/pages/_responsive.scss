@@ -118,12 +118,12 @@
     .canvas__open {
       display: block;
       font-size: 22px;
-      color: $heading-color;
+      color: map.get($theme-color, "heading-color");
       height: 35px;
       width: 35px;
       line-height: 35px;
       text-align: center;
-      border: 1px solid $heading-color;
+      border: 1px solid map.get($theme-color, "heading-color");
       border-radius: 2px;
       cursor: pointer;
       position: absolute;
@@ -157,7 +157,7 @@
       left: -300px;
       width: 300px;
       height: 100%;
-      background: $white-color;
+      background: map.get($theme-color, "white-color");
       padding: 50px 20px 30px 30px;
       display: block;
       z-index: 99;
@@ -197,12 +197,12 @@
     .slicknav_nav a {
       padding: 7px 0;
       margin: 0;
-      color: $heading-color;
+      color: map.get($theme-color, "heading-color");
       font-weight: 600;
     }
   
     .slicknav_nav .slicknav_arrow {
-      color: $heading-color;
+      color: map.get($theme-color, "heading-color");
     }
   
     .slicknav_nav .slicknav_row:hover {
@@ -210,7 +210,7 @@
       -moz-border-radius: 0;
       border-radius: 0;
       background: transparent;
-      color: $heading-color;
+      color: map.get($theme-color, "heading-color");
     }
   
     .slicknav_nav a:hover {
@@ -218,7 +218,7 @@
       -moz-border-radius: 0;
       border-radius: 0;
       background: transparent;
-      color: $heading-color;
+      color: map.get($theme-color, "heading-color");
     }
   
     .slicknav_nav {
@@ -235,7 +235,7 @@
       margin-right: 25px;
   
       a {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -263,7 +263,7 @@
       }
   
       span {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -280,7 +280,7 @@
       }
   
       ul {
-        background: $heading-color;
+        background: map.get($theme-color, "heading-color");
         display: inline-block;
         padding: 2px 0;
         position: absolute;
@@ -289,12 +289,12 @@
         opacity: 0;
         visibility: hidden;
         z-index: 3;
-        @include transition(all, .3s);
+        // @include transition(all, .3s);
   
         li {
           list-style: none;
           font-size: 13px;
-          color: $white-color;
+          color: map.get($theme-color, "white-color");
           padding: 2px 15px;
           cursor: pointer;
         }
@@ -325,7 +325,7 @@
   
       .price {
         font-size: 15px;
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-weight: 700;
         display: inline-block;
         margin-left: -20px;
@@ -337,7 +337,7 @@
     .offcanvas__text {
   
       p {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         margin-bottom: 0;
       }
     }

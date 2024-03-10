@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../header/style.scss"
-import { AiOutlineHeart, AiOutlineDown, AiOutlineShopping } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineDown, AiOutlineShopping, AiOutlineMenu } from "react-icons/ai";
 import logo from "../../../../assets/imgs/logo.png";
 import cart from "../../../../assets/imgs/imgIcon/cart.png";
 import heart from "../../../../assets/imgs/imgIcon/heart.png";
@@ -25,7 +25,7 @@ const Header = () =>{
             child:[
                 {
                     name: 'About Us',
-                    path: ROUTERS.USER.SHOP,
+                    path: ROUTERS.USER.ABOUT_US,
                 },
                 {
                     name: 'Shop Detail',
@@ -157,7 +157,7 @@ const Header = () =>{
                         </div>
                     </div>
                 </div>
-                <div className="canvas__open"><i class="fa fa-bars"></i></div>
+                <div className="canvas__open"><AiOutlineMenu /></div>
             </div>
 
         </div>

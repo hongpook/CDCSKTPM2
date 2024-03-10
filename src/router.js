@@ -6,6 +6,7 @@ import Product from "./pages/user/product";
 import Shop from "./pages/user/shop";
 import Blog from "./pages/user/blog";
 import Contact from "./pages/user/contact";
+import AboutUs from "pages/user/about_Us/aboutUs";
 
 
 const renderUserRouter = () =>{
@@ -29,6 +30,10 @@ const renderUserRouter = () =>{
         {
             path: ROUTERS.USER.PRODUCT,
             component: <Product/>
+        },
+        {
+            path: ROUTERS.USER.ABOUT_US,
+            component: <AboutUs/>
         },
     ]
 

@@ -19,7 +19,7 @@
     margin-bottom: 30px;
 
     h4 {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-weight: 700;
         margin-bottom: 10px;
     }
@@ -46,7 +46,7 @@
     }
 
     p {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-size: 20px;
         font-style: italic;
         line-height: 30px;
@@ -75,7 +75,7 @@
     padding-top: 3px;
 
     h5 {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-weight: 700;
         margin-bottom: 5px;
     }
@@ -112,7 +112,7 @@
         margin-right: 15px;
 
         h2 {
-            color: $heading-color;
+            color: map.get($theme-color, "heading-color");
             font-weight: 700;
             font-size: 60px;
             line-height: 50px;
@@ -120,7 +120,7 @@
         }
     
         strong {
-            color: $heading-color;
+            color: map.get($theme-color, "heading-color");
             font-weight: 700;
             font-size: 60px;
             line-height: 50px;
@@ -154,7 +154,7 @@
     }
 
     h4 {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-weight: 700;
         margin-bottom: 8px;
     }

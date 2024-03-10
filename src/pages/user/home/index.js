@@ -43,75 +43,13 @@ import blog_2 from '../../../assets/imgs/blog/blog-2.jpg';
 import blog_3 from '../../../assets/imgs/blog/blog-3.jpg';
 
 import Carousel from 'react-bootstrap/Carousel';
+import Slide from 'component/Slide';
 
 
 const home = () =>{
     return (
         <>
-            {/* <section class="hero">
-                <div class="hero__slider owl-carousel">
-                    <div class="hero__items set-bg" style={{ backgroundImage: `url(${hero_1})` }}>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-5 col-lg-7 col-md-8">
-                                    <div class="hero__text">
-                                        <h6>Summer Collection</h6>
-                                        <h2>Fall - Winter Collections 2030</h2>
-                                        <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
-                                        commitment to exceptional quality.</p>
-                                        <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
-                                        <div class="hero__social">
-                                            <AiOutlineFacebook />
-                                            <AiFillTwitterSquare />
-                                            <BsPinterest />
-                                            <AiOutlineInstagram />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero__items set-bg" style={{ backgroundImage: `url(${hero_2})` }}>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-5 col-lg-7 col-md-8">
-                                    <div class="hero__text">
-                                        <h6>Summer Collection</h6>
-                                        <h2>Fall - Winter Collections 2030</h2>
-                                        <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
-                                        commitment to exceptional quality.</p>
-                                        <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
-                                        <div class="hero__social">
-                                            <AiOutlineFacebook />
-                                            <AiFillTwitterSquare />
-                                            <BsPinterest />
-                                            <AiOutlineInstagram />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> */}
-            <Carousel>
-                <Carousel.Item>
-                    <img src={hero_1}/>
-                    <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img src={hero_2}/>
-                    <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                
-            </Carousel>
-            
+            <Slide/>
 
             <section class="banner spad">
                 <div class="container">
