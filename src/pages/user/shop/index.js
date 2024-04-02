@@ -3,6 +3,10 @@ import { AiOutlineRight, AiOutlineSearch } from "react-icons/ai";
 import Accordion from 'react-bootstrap/Accordion';
 import BreadCrumb from 'component/BreadCrumb_option';
 import BreadCrumb_option from 'component/BreadCrumb_option';
+import Products from 'data';
+import Heart from '../../../assets/imgs/imgIcon/heart.png';
+import Compare from '../../../assets/imgs/imgIcon/compare.png';
+import Search from '../../../assets/imgs/imgIcon/search.png';
 
 const Shop = () =>{
     const Categories = [
@@ -146,156 +150,6 @@ const Shop = () =>{
                                 </div>
                                 <div class="shop__sidebar__accordion">
                                     <div class="accordion" id="accordionExample">
-                                        {/* <div class="card">
-                                            <div class="card-heading">
-                                                <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
-                                            </div>
-                                            <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <div class="shop__sidebar__categories">
-                                                        <ul class="nice-scroll">
-                                                            <li><a href="#">Men (20)</a></li>
-                                                            <li><a href="#">Women (20)</a></li>
-                                                            <li><a href="#">Bags (20)</a></li>
-                                                            <li><a href="#">Clothing (20)</a></li>
-                                                            <li><a href="#">Shoes (20)</a></li>
-                                                            <li><a href="#">Accessories (20)</a></li>
-                                                            <li><a href="#">Kids (20)</a></li>
-                                                            <li><a href="#">Kids (20)</a></li>
-                                                            <li><a href="#">Kids (20)</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-heading">
-                                                <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <div class="shop__sidebar__brand">
-                                                        <ul>
-                                                            <li><a href="#">Louis Vuitton</a></li>
-                                                            <li><a href="#">Chanel</a></li>
-                                                            <li><a href="#">Hermes</a></li>
-                                                            <li><a href="#">Gucci</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-heading">
-                                                <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
-                                            </div>
-                                            <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <div class="shop__sidebar__price">
-                                                        <ul>
-                                                            <li><a href="#">$0.00 - $50.00</a></li>
-                                                            <li><a href="#">$50.00 - $100.00</a></li>
-                                                            <li><a href="#">$100.00 - $150.00</a></li>
-                                                            <li><a href="#">$150.00 - $200.00</a></li>
-                                                            <li><a href="#">$200.00 - $250.00</a></li>
-                                                            <li><a href="#">250.00+</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-heading">
-                                                <a data-toggle="collapse" data-target="#collapseFour">Size</a>
-                                            </div>
-                                            <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <div class="shop__sidebar__size">
-                                                        <label for="xs">xs
-                                                            <input type="radio" id="xs"/>
-                                                        </label>
-                                                        <label for="sm">s
-                                                            <input type="radio" id="sm"/>
-                                                        </label>
-                                                        <label for="md">m
-                                                            <input type="radio" id="md"/>
-                                                        </label>
-                                                        <label for="xl">xl
-                                                            <input type="radio" id="xl"/>
-                                                        </label>
-                                                        <label for="2xl">2xl
-                                                            <input type="radio" id="2xl"/>
-                                                        </label>
-                                                        <label for="xxl">xxl
-                                                            <input type="radio" id="xxl"/>
-                                                        </label>
-                                                        <label for="3xl">3xl
-                                                            <input type="radio" id="3xl"/>
-                                                        </label>
-                                                        <label for="4xl">4xl
-                                                            <input type="radio" id="4xl"/>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-heading">
-                                                <a data-toggle="collapse" data-target="#collapseFive">Colors</a>
-                                            </div>
-                                            <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <div class="shop__sidebar__color">
-                                                        <label class="c-1" for="sp-1">
-                                                            <input type="radio" id="sp-1"/>
-                                                        </label>
-                                                        <label class="c-2" for="sp-2">
-                                                            <input type="radio" id="sp-2"/>
-                                                        </label>
-                                                        <label class="c-3" for="sp-3">
-                                                            <input type="radio" id="sp-3"/>
-                                                        </label>
-                                                        <label class="c-4" for="sp-4">
-                                                            <input type="radio" id="sp-4"/>
-                                                        </label>
-                                                        <label class="c-5" for="sp-5">
-                                                            <input type="radio" id="sp-5"/>
-                                                        </label>
-                                                        <label class="c-6" for="sp-6">
-                                                            <input type="radio" id="sp-6"/>
-                                                        </label>
-                                                        <label class="c-7" for="sp-7">
-                                                            <input type="radio" id="sp-7"/>
-                                                        </label>
-                                                        <label class="c-8" for="sp-8">
-                                                            <input type="radio" id="sp-8"/>
-                                                        </label>
-                                                        <label class="c-9" for="sp-9">
-                                                            <input type="radio" id="sp-9"/>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-heading">
-                                                <a data-toggle="collapse" data-target="#collapseSix">Tags</a>
-                                            </div>
-                                            <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
-                                                <div class="card-body">
-                                                    <div class="shop__sidebar__tags">
-                                                        <a href="#">Product</a>
-                                                        <a href="#">Bags</a>
-                                                        <a href="#">Shoes</a>
-                                                        <a href="#">Fashio</a>
-                                                        <a href="#">Clothing</a>
-                                                        <a href="#">Hats</a>
-                                                        <a href="#">Accessories</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> */}
-                                        
                                         <Accordion defaultActiveKey="0">
                                             <div className='card'>
 
@@ -303,15 +157,12 @@ const Shop = () =>{
                                                     <Accordion.Header>Categories</Accordion.Header>
                                                     <Accordion.Body>
                                                         <ul class="nice-scroll">
-                                                            <li><a href="#">Men (20)</a></li>
-                                                            <li><a href="#">Women (20)</a></li>
-                                                            <li><a href="#">Bags (20)</a></li>
-                                                            <li><a href="#">Clothing (20)</a></li>
-                                                            <li><a href="#">Shoes (20)</a></li>
-                                                            <li><a href="#">Accessories (20)</a></li>
-                                                            <li><a href="#">Kids (20)</a></li>
-                                                            <li><a href="#">Kids (20)</a></li>
-                                                            <li><a href="#">Kids (20)</a></li>
+                                                            {
+                                                                Categories.map((item) =>(
+                                                                    <li><a href="#">{ item.name}</a></li>
+                                                                ))
+                                                            }
+                                                            
                                                         </ul>
                                                     </Accordion.Body>
                                                 </Accordion.Item>
@@ -321,10 +172,12 @@ const Shop = () =>{
                                                     <Accordion.Header>Branding</Accordion.Header>
                                                     <Accordion.Body>
                                                         <ul>
-                                                            <li><a href="#">Louis Vuitton</a></li>
-                                                            <li><a href="#">Chanel</a></li>
-                                                            <li><a href="#">Hermes</a></li>
-                                                            <li><a href="#">Gucci</a></li>
+                                                            {
+                                                                Branding.map((branch) => (
+                                                                    <li><a href="#">{ branch.name}</a></li>
+                                                                ))
+                                                            }
+                                                            
                                                         </ul>
                                                     </Accordion.Body>
                                                 </Accordion.Item>
@@ -334,12 +187,11 @@ const Shop = () =>{
                                                     <Accordion.Header>Filter Price</Accordion.Header>
                                                     <Accordion.Body>
                                                         <ul>
-                                                            <li><a href="#">$0.00 - $50.00</a></li>
-                                                            <li><a href="#">$50.00 - $100.00</a></li>
-                                                            <li><a href="#">$100.00 - $150.00</a></li>
-                                                            <li><a href="#">$150.00 - $200.00</a></li>
-                                                            <li><a href="#">$200.00 - $250.00</a></li>
-                                                            <li><a href="#">250.00+</a></li>
+                                                            {
+                                                                Filter_Price.map((price) => (
+                                                                    <li><a href="#"> { price.name} </a></li>
+                                                                ))
+                                                            }
                                                         </ul>
                                                     </Accordion.Body>
                                                 </Accordion.Item>
@@ -350,30 +202,14 @@ const Shop = () =>{
                                                     <Accordion.Body>
                                                         <div class="card-body">
                                                             <div class="shop__sidebar__size">
-                                                                <label for="xs">xs
-                                                                    <input type="radio" id="xs"/>
-                                                                </label>
-                                                                <label for="sm">s
-                                                                    <input type="radio" id="sm"/>
-                                                                </label>
-                                                                <label for="md">m
-                                                                    <input type="radio" id="md"/>
-                                                                </label>
-                                                                <label for="xl">xl
-                                                                    <input type="radio" id="xl"/>
-                                                                </label>
-                                                                <label for="2xl">2xl
-                                                                    <input type="radio" id="2xl"/>
-                                                                </label>
-                                                                <label for="xxl">xxl
-                                                                    <input type="radio" id="xxl"/>
-                                                                </label>
-                                                                <label for="3xl">3xl
-                                                                    <input type="radio" id="3xl"/>
-                                                                </label>
-                                                                <label for="4xl">4xl
-                                                                    <input type="radio" id="4xl"/>
-                                                                </label>
+                                                                {
+                                                                    Sizes.map((size)=>(
+                                                                        <label for={size.name}>{size.name}
+                                                                            <input type="radio" id={size.name}/>
+                                                                        </label>
+                                                                    ))
+                                                                }
+                                                                
                                                             </div>
                                                         </div>
                                                     </Accordion.Body>
@@ -381,9 +217,13 @@ const Shop = () =>{
                                             </div>
                                             <div className='card'>
                                                 <Accordion.Item eventKey="4">
-                                                    <Accordion.Header>Accordion Item #2</Accordion.Header>
+                                                    <Accordion.Header>Tags</Accordion.Header>
                                                     <Accordion.Body>
-                                                        
+                                                            {
+                                                                Tags.map((tag) => (
+                                                                    <li><a href="#"> { tag.name} </a></li>
+                                                                ))
+                                                            }
                                                     </Accordion.Body>
                                                 </Accordion.Item>
                                             </div>
@@ -413,148 +253,48 @@ const Shop = () =>{
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                                            <ul class="product__hover">
-                                                <li><a href="#"><img src="img/icon/heart.png" alt=""/></a></li>
-                                                <li><a href="#"><img src="img/icon/compare.png" alt=""/> <span>Compare</span></a>
-                                                </li>
-                                                <li><a href="#"><img src="img/icon/search.png" alt=""/></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__item__text">
-                                            <h6>Piqué Biker Jacket</h6>
-                                            <a href="#" class="add-cart">+ Add To Cart</a>
-                                            <div class="rating">
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                            <h5>$67.24</h5>
-                                            <div class="product__color__select">
-                                                <label for="pc-4">
-                                                    <input type="radio" id="pc-4"/>
-                                                </label>
-                                                <label class="active black" for="pc-5">
-                                                    <input type="radio" id="pc-5"/>
-                                                </label>
-                                                <label class="grey" for="pc-6">
-                                                    <input type="radio" id="pc-6"/>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item sale">
-                                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                                            <span class="label">Sale</span>
-                                            <ul class="product__hover">
-                                                <li><a href="#"><img src="img/icon/heart.png" alt=""/></a></li>
-                                                <li><a href="#"><img src="img/icon/compare.png" alt=""/> <span>Compare</span></a>
-                                                </li>
-                                                <li><a href="#"><img src="img/icon/search.png" alt=""/></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__item__text">
-                                            <h6>Multi-pocket Chest Bag</h6>
-                                            <a href="#" class="add-cart">+ Add To Cart</a>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                            <h5>$43.48</h5>
-                                            <div class="product__color__select">
-                                                <label for="pc-7">
-                                                    <input type="radio" id="pc-7"/>
-                                                </label>
-                                                <label class="active black" for="pc-8">
-                                                    <input type="radio" id="pc-8"/>
-                                                </label>
-                                                <label class="grey" for="pc-9">
-                                                    <input type="radio" id="pc-9"/>
-                                                </label>
+                                {
+                                    Products.map((itemProduct, index) =>(
+                                        <div class="col-lg-4 col-md-6 col-sm-6" key = {itemProduct.id}>
+                                            <div class="product__item sale">
+                                                <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${itemProduct.image})` }}>
+                                                    <span class="label">{itemProduct.sale}</span>
+                                                    <ul class="product__hover">
+                                                        <li><a href="#"><img src={Heart} alt=""/></a></li>
+                                                        <li><a href="#"><img src={Compare} alt=""/> <span>Compare</span></a></li>
+                                                        <li><a href="#"><img src={Search} alt=""/></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product__item__text">
+                                                    <h6>{itemProduct.name}</h6>
+                                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    <h5>{itemProduct.price}</h5>
+                                                    <div class="product__color__select">
+                                                        <label for="pc-7">
+                                                            <input type="radio" id="pc-7"/>
+                                                        </label>
+                                                        <label class="active black" for="pc-8">
+                                                            <input type="radio" id="pc-8"/>
+                                                        </label>
+                                                        <label class="grey" for="pc-9">
+                                                            <input type="radio" id="pc-9"/>
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
-                                            <ul class="product__hover">
-                                                <li><a href="#"><img src="img/icon/heart.png" alt=""/></a></li>
-                                                <li><a href="#"><img src="img/icon/compare.png" alt=""/> <span>Compare</span></a>
-                                                </li>
-                                                <li><a href="#"><img src="img/icon/search.png" alt=""/></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__item__text">
-                                            <h6>Diagonal Textured Cap</h6>
-                                            <a href="#" class="add-cart">+ Add To Cart</a>
-                                            <div class="rating">
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                            <h5>$60.9</h5>
-                                            <div class="product__color__select">
-                                                <label for="pc-10">
-                                                    <input type="radio" id="pc-10"/>
-                                                </label>
-                                                <label class="active black" for="pc-11">
-                                                    <input type="radio" id="pc-11"/>
-                                                </label>
-                                                <label class="grey" for="pc-12">
-                                                    <input type="radio" id="pc-12"/>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item sale">
-                                        <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
-                                            <span class="label">Sale</span>
-                                            <ul class="product__hover">
-                                                <li><a href="#"><img src="img/icon/heart.png" alt=""/></a></li>
-                                                <li><a href="#"><img src="img/icon/compare.png" alt=""/> <span>Compare</span></a>
-                                                </li>
-                                                <li><a href="#"><img src="img/icon/search.png" alt=""/></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__item__text">
-                                            <h6>Ankle Boots</h6>
-                                            <a href="#" class="add-cart">+ Add To Cart</a>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                            <h5>$98.49</h5>
-                                            <div class="product__color__select">
-                                                <label for="pc-16">
-                                                    <input type="radio" id="pc-16"/>
-                                                </label>
-                                                <label class="active black" for="pc-17">
-                                                    <input type="radio" id="pc-17"/>
-                                                </label>
-                                                <label class="grey" for="pc-18">
-                                                    <input type="radio" id="pc-18"/>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    ))
+                                }
+                                
+                                
+                                
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
