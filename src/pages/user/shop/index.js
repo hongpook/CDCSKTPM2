@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { AiOutlineRight, AiOutlineSearch } from "react-icons/ai";
 import Accordion from 'react-bootstrap/Accordion';
 import BreadCrumb from 'component/BreadCrumb_option';
@@ -7,6 +8,9 @@ import Products from 'data';
 import Heart from '../../../assets/imgs/imgIcon/heart.png';
 import Compare from '../../../assets/imgs/imgIcon/compare.png';
 import Search from '../../../assets/imgs/imgIcon/search.png';
+
+
+import PriceComponent from '../../../format_price';
 
 const Shop = () =>{
     const Categories = [
@@ -267,7 +271,7 @@ const Shop = () =>{
                                                 </div>
                                                 <div class="product__item__text">
                                                     <h6>{itemProduct.name}</h6>
-                                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                                    <a href="#" class="add-cart">+ Add To Cart <Link to={`/shop/${itemProduct.id}`}><PriceComponent price={itemProduct.price} /></Link></a>
                                                     <div class="rating">
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
@@ -275,7 +279,7 @@ const Shop = () =>{
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star-o"></i>
                                                     </div>
-                                                    <h5>{itemProduct.price}</h5>
+                                                    <h5><PriceComponent price={itemProduct.price} /></h5>
                                                     <div class="product__color__select">
                                                         <label for="pc-7">
                                                             <input type="radio" id="pc-7"/>

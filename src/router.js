@@ -3,6 +3,7 @@ import Home from "./pages/user/home";
 import { ROUTERS } from "./utils/router";
 import MasterLayout from "./pages/user/theme/masterLayout";
 import Product from "./pages/user/product";
+import ProductDetail from './pages/user/product_detail/product_detail'
 import Shop from "./pages/user/shop";
 import Blog from "./pages/user/blog";
 import Contact from "./pages/user/contact";
@@ -30,6 +31,10 @@ const renderUserRouter = () =>{
         {
             path: ROUTERS.USER.PRODUCT,
             component: <Product/>
+        },
+        {
+            path: ROUTERS.USER.PRODUCT_ID,
+            component: <ProductDetail/>
         },
         {
             path: ROUTERS.USER.ABOUT_US,

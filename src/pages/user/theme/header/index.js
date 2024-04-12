@@ -29,7 +29,7 @@ const Header = () =>{
                 },
                 {
                     name: 'Shop Detail',
-                    path: ROUTERS.USER.HOME,
+                    path: ROUTERS.USER.PRODUCT,
                 },
                 {
                     name: 'Shopping Cart',
@@ -90,17 +90,17 @@ const Header = () =>{
                 <div className="row">
                     <div className="col-lg-3 col-md-3">
                         <div className="header__logo">
-                            <a href="./index.html">
-                                <img src={logo} alt=""/>
+                            <Link to="/">
+                                <img src={logo} alt="" />
 
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-6">
                         <nav className="header__menu mobile-menu">
                             <ul>
 
-                                {
+                                {/* {
                                     menus?.map((menu, menuKey) =>(
                                         <li key={menuKey} className={menuKey === 0 ? "active" : ""}> 
                                             <Link to={menu?.path}>
@@ -124,20 +124,21 @@ const Header = () =>{
                                             }
                                         </li>
                                     ))
-                                }
-                                {/* <li className="active"><a href="./index.html">Home</a></li>
-                                <li><a href="./shop.html">Shop</a></li>
-                                <li><a href="#">Pages</a>
+                                } */}
+                                <li className="active"><Link to="/">Home</Link></li>
+                                <li><Link to="/shop">Shop</Link></li>
+                                <li><Link to="#">Pages</Link>
                                     <ul className="dropdown">
-                                        <li><a href="./about.html">About Us</a></li>
-                                        <li><a href="./shop-details.html">Shop Details</a></li>
-                                        <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                        <li><a href="./checkout.html">Check Out</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                        <li><Link to="/aboutUs">About Us</Link></li>
+                                        <li><Link to="/product">Shop Details</Link></li>
+                                        <li><Link to="">Shopping Cart</Link></li>
+                                        <li><Link to="">Check Out</Link></li>
+                                        <li><Link to="">Blog Details</Link></li>
                                     </ul>
                                 </li>
-                                <li><a href="./blog.html">Blog</a></li>
-                                <li><a href="./contact.html">Contacts</a></li> */}
+                                <li><Link to="/blogs">Blog</Link></li>
+                                <li><Link to="/contact">Contacts</Link></li>
+                                
                             </ul>
                         </nav>
                     </div>
