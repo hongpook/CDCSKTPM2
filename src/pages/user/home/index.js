@@ -446,7 +446,7 @@ const home = () =>{
                                 <h2>Instagram</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                 labore et dolore magna aliqua.</p>
-                                <h3>#Male_Fashion</h3>
+                                <h3>#Adidas_Vietnam</h3>
                             </div>
                         </div>
                     </div>

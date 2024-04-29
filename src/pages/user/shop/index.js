@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineRight, AiOutlineSearch } from "react-icons/ai";
 import Accordion from 'react-bootstrap/Accordion';
@@ -11,6 +11,9 @@ import Search from '../../../assets/imgs/imgIcon/search.png';
 
 
 import PriceComponent from '../../../format_price';
+import axios from 'axios';
+
+
 
 const Shop = () =>{
     const Categories = [
@@ -135,6 +138,7 @@ const Shop = () =>{
             name: 'Accessories',
         },
     ]
+
 
     return (
         
@@ -261,17 +265,20 @@ const Shop = () =>{
                                     Products.map((itemProduct, index) =>(
                                         <div class="col-lg-4 col-md-6 col-sm-6" key = {itemProduct.id}>
                                             <div class="product__item sale">
-                                                <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${itemProduct.image})` }}>
-                                                    <span class="label">{itemProduct.sale}</span>
-                                                    <ul class="product__hover">
-                                                        <li><a href="#"><img src={Heart} alt=""/></a></li>
-                                                        <li><a href="#"><img src={Compare} alt=""/> <span>Compare</span></a></li>
-                                                        <li><a href="#"><img src={Search} alt=""/></a></li>
-                                                    </ul>
-                                                </div>
+                                                <Link to={`/shop/${itemProduct.id}`}>
+
+                                                    <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${itemProduct.image})` }}>
+                                                        <span class="label">{itemProduct.sale}</span>
+                                                        <ul class="product__hover">
+                                                            <li><a href="#"><img src={Heart} alt=""/></a></li>
+                                                            <li><a href="#"><img src={Compare} alt=""/> <span>Compare</span></a></li>
+                                                            <li><a href="#"><img src={Search} alt=""/></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </Link>
                                                 <div class="product__item__text">
                                                     <h6>{itemProduct.name}</h6>
-                                                    <a href="#" class="add-cart">+ Add To Cart <Link to={`/shop/${itemProduct.id}`}><PriceComponent price={itemProduct.price} /></Link></a>
+                                                    <a href="#" class="add-cart">+ Add To Cart </a>
                                                     <div class="rating">
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
@@ -296,9 +303,6 @@ const Shop = () =>{
                                         </div>
                                     ))
                                 }
-                                
-                                
-                                
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
