@@ -1,66 +1,102 @@
-const Express = require("express");
-const Mongoose = require("mongoose");
-const BodyParser = require("body-parser");
+const cors = require("cors");
+const express = require("express");
+const mysql = require("mysql2/promise");
+const app = express();
+const port = 4000;
 
-var app = Express();
-Mongoose.connect("mongodb://localhost:27017/Test");
-
-app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({ extended: true }));
-
-
-const PersonModel = Mongoose.model("person", {
-  firstname: String,
-  lastname: String
+const connection = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "dbproduct",
 });
 
-// Define REST API
-app.post("/person", async (request, response) => {
+// Get Data to Album
+app.get("/onepiece", cors(), async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   try {
-    var person = new PersonModel(request.body);
-    var result = await person.save();
-    response.send(result);
-  } catch (error) {
-    response.status(500).send(error);
-}
-
-});
-app.get("/people", async (request, response) => {
-  try {
-    var result = await PersonModel.find().exec();
-    response.send(result);
-  } catch (error) {
-      response.status(500).send(error);
-  }
-});
-app.get("/person/:id", async (request, response) => {
-  try {
-    var person = await PersonModel.findById(request.params.id).exec();
-    response.send(person);
-  } catch (error) {
-      response.status(500).send(error);
-  }
-});
-app.put("/person/:id", async (request, response) => {
-  try {
-    var person = await PersonModel.findById(request.params.id).exec();
-    person.set(request.body);
-    var result = await person.save();
-    response.send(result);
-  } catch (error) {
-      response.status(500).send(error);
-  }
-});
-app.delete("/person/:id", async (request, response) => {
-  
-  try {
-    var result = await PersonModel.deleteOne({ _id: request.params.id }).exec();
-    response.send(result);
-  } catch (error) {
-      response.status(500).send(error);
+    const [rows] = await connection.query("SELECT * FROM product_onepiece");
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching news");
   }
 });
 
-app.listen(3001, () => {
- console.log("Listening at :3001...");
+
+app.get("/flower", cors(), async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  try {
+    const [rows] = await connection.query("SELECT * FROM product_flower");
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching news");
+  }
+});
+
+// Get data to Basic
+
+app.get("/product_basic", cors(), async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  try {
+    const [rows] = await connection.query("SELECT * FROM product_basic");
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching news");
+  }
+});
+
+// Get data accesory
+app.get("/product_accesory1", cors(), async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  try {
+    const [rows] = await connection.query("SELECT * FROM product_accesory1");
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching news");
+  }
+});
+
+app.get("/product_accesory2", cors(), async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  try {
+    const [rows] = await connection.query("SELECT * FROM product_accesory2");
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching news");
+  }
+});
+
+// Get data to blog
+
+app.get("/blog", cors(), async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  try {
+    const [rows] = await connection.query("SELECT * FROM blog");
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching news");
+  }
+});
+
+
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });

@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../header/style.scss"
-import { AiOutlineHeart, AiOutlineDown, AiOutlineShopping, AiOutlineMenu } from "react-icons/ai";
+import {  AiOutlineDown, AiOutlineMenu } from "react-icons/ai";
 import logo from "../../../../assets/imgs/Adidas_Logo.png";
 import cart from "../../../../assets/imgs/imgIcon/cart.png";
 import heart from "../../../../assets/imgs/imgIcon/heart.png";
@@ -9,6 +9,8 @@ import search from "../../../../assets/imgs/imgIcon/search.png";
 import { ROUTERS } from 'utils/router';
 
 const Header = () =>{
+
+
     const [menus, setMenus] = useState([
         {
             name: 'Home',
@@ -131,8 +133,8 @@ const Header = () =>{
                                     <ul className="dropdown">
                                         <li><Link to="/aboutUs">About Us</Link></li>
                                         <li><Link to="/product">Shop Details</Link></li>
-                                        <li><Link to="">Shopping Cart</Link></li>
-                                        <li><Link to="">Check Out</Link></li>
+                                        <li><Link to="/productList">Shopping Cart</Link></li>
+                                        <li><Link to="/table">Check Out</Link></li>
                                         <li><Link to="">Blog Details</Link></li>
                                     </ul>
                                 </li>
@@ -144,24 +146,25 @@ const Header = () =>{
                     </div>
                     <div className="col-lg-3 col-md-3">
                         <div className="header__nav__option">
-                            <a href="#" className="search-switch">
-                                <img src={search} alt=""/>
-                            </a>
-                            <a href="#">
+                            <Link to="/search" className="search-switch" >
+                                <img src={search} alt="" />
+                                
+                            </Link>
+                            <Link to="#">
                                 <img src={heart} alt=""/>
 
-                            </a>
-                            <a href="#">
+                            </Link>
+                            <Link to="#">
                                 <img src={cart} alt=""/>
-                            </a>
+                            </Link>
                             <div class="price">$0.00</div>
                         </div>
                     </div>
                 </div>
                 <div className="canvas__open"><AiOutlineMenu /></div>
             </div>
-
         </div>
+        
     );
 }
 

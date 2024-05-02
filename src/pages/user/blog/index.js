@@ -1,11 +1,11 @@
-import BreadCrumb_blog from 'component/BreadCrumb_blog';
+import BreadCrumb from 'component/BreadCrumb';
 import Blogs from 'component/Blog';
 import { memo } from 'react';
 
 const Blog = () =>{
     return (
         <>
-            <BreadCrumb_blog/>
+            <BreadCrumb title="Blogs"/>
             <Blogs/>
         </>
     );

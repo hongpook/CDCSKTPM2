@@ -1,5 +1,5 @@
 
-import BreadCrumb_aboutUs from 'component/BreadCrumb_aboutUs';
+import BreadCrumb from 'component/BreadCrumb';
 import Team_Member from 'component/Team_Member';
 import { memo } from 'react';
 
@@ -19,7 +19,7 @@ const AboutUs = () =>{
     return (
         <>
             
-            <BreadCrumb_aboutUs/>
+            <BreadCrumb title="About Us"/>
 
             <section class="about spad">
                 <div class="container">

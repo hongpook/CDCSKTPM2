@@ -1,7 +1,8 @@
 import { memo } from 'react';
-import { AiOutlineRight, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
-const BreadCrumb_aboutUs = () =>{
+const BreadCrumb_aboutUs = ({title}) =>{
     return (
         <>
             <section class="breadcrumb-option">
@@ -9,11 +10,11 @@ const BreadCrumb_aboutUs = () =>{
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="breadcrumb__text">
-                                <h4>About Us</h4>
+                                <h4>{title}</h4>
                                 <div class="breadcrumb__links">
-                                    <a href="">Home</a>
+                                    <Link to="/">Home</Link>
                                     <AiOutlineRight />
-                                    <span>About Us</span>
+                                    <span>{title}</span>
                                 </div>
                             </div>
                         </div>

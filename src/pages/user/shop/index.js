@@ -1,10 +1,8 @@
 import { memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineRight, AiOutlineSearch } from "react-icons/ai";
+import {  AiOutlineSearch } from "react-icons/ai";
 import Accordion from 'react-bootstrap/Accordion';
-import BreadCrumb from 'component/BreadCrumb_option';
-import BreadCrumb_option from 'component/BreadCrumb_option';
-import Products from 'data';
+import BreadCrumb from 'component/BreadCrumb';
 import Heart from '../../../assets/imgs/imgIcon/heart.png';
 import Compare from '../../../assets/imgs/imgIcon/compare.png';
 import Search from '../../../assets/imgs/imgIcon/search.png';
@@ -16,6 +14,18 @@ import axios from 'axios';
 
 
 const Shop = () =>{
+
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:3001/products')
+        .then(response => {
+            setData(response.data);
+        })
+        .catch(error => {
+            console.error('Lỗi lấy dữ liệu:', error);
+        });
+    }, []);
+
     const Categories = [
         {
             name: 'Men',
@@ -143,7 +153,7 @@ const Shop = () =>{
     return (
         
         <>
-            <BreadCrumb_option/>
+            <BreadCrumb title="Shop"/>
 
             <section class="shop spad">
                 <div class="container">
@@ -262,7 +272,7 @@ const Shop = () =>{
                             </div>
                             <div class="row">
                                 {
-                                    Products.map((itemProduct, index) =>(
+                                    data.map((itemProduct, index) =>(
                                         <div class="col-lg-4 col-md-6 col-sm-6" key = {itemProduct.id}>
                                             <div class="product__item sale">
                                                 <Link to={`/shop/${itemProduct.id}`}>
