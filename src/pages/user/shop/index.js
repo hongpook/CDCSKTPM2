@@ -6,7 +6,7 @@ import BreadCrumb from 'component/BreadCrumb';
 import Heart from '../../../assets/imgs/imgIcon/heart.png';
 import Compare from '../../../assets/imgs/imgIcon/compare.png';
 import Search from '../../../assets/imgs/imgIcon/search.png';
-
+import Pagination from 'component/Pagination';
 
 import PriceComponent from '../../../format_price';
 import axios from 'axios';
@@ -271,59 +271,7 @@ const Shop = () =>{
                                 </div>
                             </div>
                             <div class="row">
-                                {
-                                    data.map((itemProduct, index) =>(
-                                        <div class="col-lg-4 col-md-6 col-sm-6" key = {itemProduct.id}>
-                                            <div class="product__item sale">
-                                                <Link to={`/shop/${itemProduct.id}`}>
-
-                                                    <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${itemProduct.image})` }}>
-                                                        <span class="label">{itemProduct.sale}</span>
-                                                        <ul class="product__hover">
-                                                            <li><a href="#"><img src={Heart} alt=""/></a></li>
-                                                            <li><a href="#"><img src={Compare} alt=""/> <span>Compare</span></a></li>
-                                                            <li><a href="#"><img src={Search} alt=""/></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </Link>
-                                                <div class="product__item__text">
-                                                    <h6>{itemProduct.name}</h6>
-                                                    <a href="#" class="add-cart">+ Add To Cart </a>
-                                                    <div class="rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <h5><PriceComponent price={itemProduct.price} /></h5>
-                                                    <div class="product__color__select">
-                                                        <label for="pc-7">
-                                                            <input type="radio" id="pc-7"/>
-                                                        </label>
-                                                        <label class="active black" for="pc-8">
-                                                            <input type="radio" id="pc-8"/>
-                                                        </label>
-                                                        <label class="grey" for="pc-9">
-                                                            <input type="radio" id="pc-9"/>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="product__pagination">
-                                        <a class="active" href="#">1</a>
-                                        <a href="#">2</a>
-                                        <a href="#">3</a>
-                                        <span>...</span>
-                                        <a href="#">21</a>
-                                    </div>
-                                </div>
+                                <Pagination/>
                             </div>
                         </div>
                     </div>

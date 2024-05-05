@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import "../header/style.scss"
 import {  AiOutlineDown, AiOutlineMenu } from "react-icons/ai";
 import logo from "../../../../assets/imgs/Adidas_Logo.png";
@@ -101,7 +101,7 @@ const Header = () =>{
                     <div className="col-lg-6 col-md-6">
                         <nav className="header__menu mobile-menu">
                             <ul>
-
+                                {/* navbar test */}
                                 {/* {
                                     menus?.map((menu, menuKey) =>(
                                         <li key={menuKey} className={menuKey === 0 ? "active" : ""}> 
@@ -127,20 +127,36 @@ const Header = () =>{
                                         </li>
                                     ))
                                 } */}
-                                <li className="active"><Link to="/">Home</Link></li>
-                                <li><Link to="/shop">Shop</Link></li>
+
+                                {/* navbar gốc */}
+                                {/* <li className="active"><Link to="/">Home</Link></li>
+                                <li className=""><Link to="/shop">Shop</Link></li>
                                 <li><Link to="#">Pages</Link>
                                     <ul className="dropdown">
                                         <li><Link to="/aboutUs">About Us</Link></li>
                                         <li><Link to="/product">Shop Details</Link></li>
                                         <li><Link to="/productList">Shopping Cart</Link></li>
-                                        <li><Link to="/table">Check Out</Link></li>
+                                        <li><Link to="">Check Out</Link></li>
                                         <li><Link to="">Blog Details</Link></li>
                                     </ul>
                                 </li>
-                                <li><Link to="/blogs">Blog</Link></li>
-                                <li><Link to="/contact">Contacts</Link></li>
+                                <li className=""><Link to="/blogs">Blog</Link></li>
+                                <li className=""><Link to="/contact">Contacts</Link></li> */}
                                 
+                                <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
+                                <li><NavLink to="/shop" activeClassName="active">Shop</NavLink></li>
+                                <li>
+                                <NavLink to="#" activeClassName="active">Pages</NavLink>
+                                <ul className="dropdown">
+                                    <li><NavLink to="/aboutUs" activeClassName="active">About Us</NavLink></li>
+                                    <li><NavLink to="/product" activeClassName="active">Shop Details</NavLink></li>
+                                    <li><NavLink to="/productList" activeClassName="active">Shopping Cart</NavLink></li>
+                                    <li><NavLink to="" activeClassName="active">Check Out</NavLink></li>
+                                    <li><NavLink to="" activeClassName="active">Blog Details</NavLink></li>
+                                </ul>
+                                </li>
+                                <li><NavLink to="/blogs" activeClassName="active">Blog</NavLink></li>
+                                <li><NavLink to="/contact" activeClassName="active">Contacts</NavLink></li>
                             </ul>
                         </nav>
                     </div>
@@ -150,11 +166,11 @@ const Header = () =>{
                                 <img src={search} alt="" />
                                 
                             </Link>
-                            <Link to="#">
+                            <Link to="">
                                 <img src={heart} alt=""/>
 
                             </Link>
-                            <Link to="#">
+                            <Link to="">
                                 <img src={cart} alt=""/>
                             </Link>
                             <div class="price">$0.00</div>

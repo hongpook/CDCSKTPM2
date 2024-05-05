@@ -1,0 +1,31 @@
+@use "sass:map";
+@import "theme";
+.pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pagination-custom {
+    margin-top: 20px;
+  }
+  
+  #page-numbers {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  #page-numbers li {
+    margin-right: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+  }
+  
+  #page-numbers li.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  

@@ -66,7 +66,7 @@ const SearchProduct = () => {
                       <Link to={`/shop/${product.id}`}>
                       <div
                           class="product__item__pic set-bg"
-                          style={{ backgroundImage: `url(${product.image})` }}
+                          style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}
                       >
                           <span class="label">{product.sale}</span>
                           <ul class="product__hover">

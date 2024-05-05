@@ -20,10 +20,10 @@ class TableItem extends Component {
     return (
         <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix" key={data.id}>
             <div class="product__item sale">
-                <Link to={`/shop/${data.id}`}>
+                <Link to={`/products/${data.id}`}>
                 <div
                     class="product__item__pic set-bg"
-                    style={{ backgroundImage: `url(${data.image})` }}
+                    style={{ backgroundImage: `url(${require('../images/products/' + data.image)})` }}
                 >
                     <span class="label">{data.sale}</span>
                     <ul class="product__hover">

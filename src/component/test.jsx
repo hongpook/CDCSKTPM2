@@ -1,18 +1,29 @@
 import React, { Component } from "react";
-import TableItem from "./TableItem";
-import './style.scss';
-
-import DataProducts from '../../../data';
+import Item from "pages/user/product_list/test";
+import axios from 'axios';
 
 class Pagination extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newsList: DataProducts,
+      newsList: [],
       currentPage: 1,
-      newsPerPage: 8
+      newsPerPage: 4
     };
   }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/products'); 
+      this.setState({ newsList: response.data });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   chosePage = (event) => {
     this.setState({
@@ -27,7 +38,7 @@ class Pagination extends Component {
     const currentTodos = newsList.slice(indexOfFirstNews, indexOfLastNews);
     const renderTodos = currentTodos.map((todo, index) => {
       return (
-        <TableItem
+        <Item
           stt={index + 1 + (currentPage - 1) * newsPerPage}
           key={index}
           data={todo}
@@ -39,10 +50,9 @@ class Pagination extends Component {
       pageNumbers.push(i);
     }
     return (
-      <div className="App">
-        <div className="container">
-          <div className="row">{renderTodos}</div>
-        </div>
+      <div className="pagination">
+        <div className="row">{renderTodos}</div>
+       
         <div className="pagination-custom">
           <ul id="page-numbers">
             {pageNumbers.map((number) => {
@@ -66,4 +76,5 @@ class Pagination extends Component {
     );
   }
 }
+
 export default Pagination;

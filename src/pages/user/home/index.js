@@ -1,15 +1,7 @@
 import { memo } from 'react';
-import { AiOutlineHeart, AiOutlineDown, AiOutlineShopping,
-    AiOutlineFacebook,
-    AiFillTwitterSquare,
-    AiOutlineInstagram
- } from "react-icons/ai";
-import { BsPinterest } from "react-icons/bs";
 import "../home/style.scss";
 
 
-import hero_1 from "../../../assets/imgs/hero/hero-1.jpg";
-import hero_2 from "../../../assets/imgs/hero/hero-2.jpg";
 
 import banner_1 from "../../../assets/imgs/banner/banner-1.jpg";
 import banner_2 from "../../../assets/imgs/banner/banner-2.jpg";
@@ -42,7 +34,6 @@ import blog_1 from '../../../assets/imgs/blog/blog-1.jpg';
 import blog_2 from '../../../assets/imgs/blog/blog-2.jpg';
 import blog_3 from '../../../assets/imgs/blog/blog-3.jpg';
 
-import Carousel from 'react-bootstrap/Carousel';
 import Slide from 'component/Slide';
 
 

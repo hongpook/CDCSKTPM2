@@ -1,50 +1,60 @@
-import React, { useState } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import React from 'react';
+import {
+  MDBContainer,
+  MDBInput,
+  MDBCheckbox,
+  MDBBtn,
+  MDBIcon
+}
+from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
+import BreadCrumb from 'component/BreadCrumb';
 
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Xử lý đăng nhập ở đây
-    console.log('Đăng nhập với email:', email, 'và mật khẩu:', password);
-  };
-
+function App() {
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <h2 className="text-center mb-4">Đăng Nhập</h2>
-          <Form onSubmit={handleSubmit}>
-            <FormGroup>
-              <Label for="email">Email</Label>
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Nhập email của bạn"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="password">Mật Khẩu</Label>
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Nhập mật khẩu của bạn"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </FormGroup>
-            <Button color="primary" block>Đăng Nhập</Button>
-          </Form>
+    <div>
+      <BreadCrumb title="Login"/>
+      <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
+
+        <MDBInput wrapperClass='mb-4' placeholder='Email address' id='form1' type='email'/>
+        <MDBInput wrapperClass='mb-4' placeholder='Password' id='form2' type='password'/>
+
+        <div className="d-flex justify-content-between mx-3 mb-4">
+          <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
+          <a href="!#">Forgot password?</a>
         </div>
-      </div>
+
+        <MDBBtn className="mb-4">Sign in</MDBBtn>
+
+        <div className="text-center">
+          <p>Not a member? <Link to="/">Register</Link></p>
+          <p>or sign up with:</p>
+
+          <div className='d-flex justify-content-between mx-auto' style={{width: '40%'}}>
+            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
+              <MDBIcon fab icon='facebook-f' size="sm"/>
+            </MDBBtn>
+
+            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
+              <MDBIcon fab icon='twitter' size="sm"/>
+            </MDBBtn>
+
+            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
+              <MDBIcon fab icon='google' size="sm"/>
+            </MDBBtn>
+
+            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
+              <MDBIcon fab icon='github' size="sm"/>
+            </MDBBtn>
+
+          </div>
+        </div>
+
+      </MDBContainer>
+
     </div>
   );
-};
+}
 
-export default LoginPage;
+export default App;

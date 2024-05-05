@@ -1,33 +1,262 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import Grid from "component/Grid";
+import { SectionBody } from "component/SectionBody";
 
-const DataComponent = () => {
-  const [data, setData] = useState([]);
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function ProductList() {
+  const [value, setValue] = useState("1");
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/products')
-      .then(response => {
-        setData(response.data);
+    fetch("http://localhost:3001/products") // Change the URL to your API endpoint
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(shuffleArray(data)); // Shuffle the products array
       })
-      .catch(error => {
-        console.error('Lỗi lấy dữ liệu:', error);
-      });
-  }, []);
+      .catch((error) => console.error("Error fetching products:", error));
+  }, [value]); // Fetch products whenever the value changes (tab changes)
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
-    <div>
-      <h1>Dữ liệu từ PostgreSQL</h1>
-      <ul>
-        {data.map(item => (
-          <div key={item.id}>
-            <p>{item.name}</p>
-            <p>{item.price}</p>
-            <img src={item.image} alt=''></img>
-          </div>
-        ))}
-      </ul>
+    <div className="App">
+      
+      <div>
+        <Box sx={{ width: "100%", typography: "body1" }}>
+          <TabContext value={value}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <TabList onChange={handleChange} aria-label="lab API tabs example">
+                <Tab label="All Products" value="1" />
+                <Tab label="Originals" value="2" />
+                <Tab label="SportWear" value="3" />
+                <Tab label="TERREX" value="4" />
+                <Tab label="SUSTAINABILITY" value="5" />
+              </TabList>
+            </Box>
+            <TabPanel value="1">
+                <div className="row">
+                  {products.slice(0, 8).map((product) => (
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                      <div class="product__item">
+                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}>
+                              <span class="label">New</span>
+                              <ul class="product__hover">
+                                  {/* <li><a href="#"><img src={heart} alt=""/></a></li>
+                                  <li><a href="#"><img src={compare} alt=""/> <span>Compare</span></a></li>
+                                  <li><a href="#"><img src={search} alt=""/></a></li> */}
+                              </ul>
+                          </div>
+                          <div class="product__item__text">
+                              <h6>{product.name}</h6>
+                              <a href="#" class="add-cart">+ Add To Cart</a>
+                              <div class="rating">
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                              </div>
+                              <h5>{product.price}</h5>
+                              <div class="product__color__select">
+                                  <label for="pc-1">
+                                      <input type="radio" id="pc-1"/>
+                                  </label>
+                                  <label class="active black" for="pc-2">
+                                      <input type="radio" id="pc-2"/>
+                                  </label>
+                                  <label class="grey" for="pc-3">
+                                      <input type="radio" id="pc-3"/>
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  ))}
+                </div>
+            </TabPanel>
+            <TabPanel value="2">
+            <div className="row">
+                  {products.slice(0, 8).map((product) => (
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                      <div class="product__item">
+                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}>
+                              <span class="label">New</span>
+                              <ul class="product__hover">
+                                  {/* <li><a href="#"><img src={heart} alt=""/></a></li>
+                                  <li><a href="#"><img src={compare} alt=""/> <span>Compare</span></a></li>
+                                  <li><a href="#"><img src={search} alt=""/></a></li> */}
+                              </ul>
+                          </div>
+                          <div class="product__item__text">
+                              <h6>{product.name}</h6>
+                              <a href="#" class="add-cart">+ Add To Cart</a>
+                              <div class="rating">
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                              </div>
+                              <h5>{product.price}</h5>
+                              <div class="product__color__select">
+                                  <label for="pc-1">
+                                      <input type="radio" id="pc-1"/>
+                                  </label>
+                                  <label class="active black" for="pc-2">
+                                      <input type="radio" id="pc-2"/>
+                                  </label>
+                                  <label class="grey" for="pc-3">
+                                      <input type="radio" id="pc-3"/>
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  ))}
+                </div>
+            </TabPanel>
+            <TabPanel value="3">
+            <div className="row">
+                  {products.slice(0, 8).map((product) => (
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                      <div class="product__item">
+                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}>
+                              <span class="label">New</span>
+                              <ul class="product__hover">
+                                  {/* <li><a href="#"><img src={heart} alt=""/></a></li>
+                                  <li><a href="#"><img src={compare} alt=""/> <span>Compare</span></a></li>
+                                  <li><a href="#"><img src={search} alt=""/></a></li> */}
+                              </ul>
+                          </div>
+                          <div class="product__item__text">
+                              <h6>{product.name}</h6>
+                              <a href="#" class="add-cart">+ Add To Cart</a>
+                              <div class="rating">
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                              </div>
+                              <h5>{product.price}</h5>
+                              <div class="product__color__select">
+                                  <label for="pc-1">
+                                      <input type="radio" id="pc-1"/>
+                                  </label>
+                                  <label class="active black" for="pc-2">
+                                      <input type="radio" id="pc-2"/>
+                                  </label>
+                                  <label class="grey" for="pc-3">
+                                      <input type="radio" id="pc-3"/>
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  ))}
+                </div>
+            </TabPanel>
+            <TabPanel value="4">
+            <div className="row">
+                  {products.slice(0, 8).map((product) => (
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                      <div class="product__item">
+                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}>
+                              <span class="label">New</span>
+                              <ul class="product__hover">
+                                  {/* <li><a href="#"><img src={heart} alt=""/></a></li>
+                                  <li><a href="#"><img src={compare} alt=""/> <span>Compare</span></a></li>
+                                  <li><a href="#"><img src={search} alt=""/></a></li> */}
+                              </ul>
+                          </div>
+                          <div class="product__item__text">
+                              <h6>{product.name}</h6>
+                              <a href="#" class="add-cart">+ Add To Cart</a>
+                              <div class="rating">
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                              </div>
+                              <h5>{product.price}</h5>
+                              <div class="product__color__select">
+                                  <label for="pc-1">
+                                      <input type="radio" id="pc-1"/>
+                                  </label>
+                                  <label class="active black" for="pc-2">
+                                      <input type="radio" id="pc-2"/>
+                                  </label>
+                                  <label class="grey" for="pc-3">
+                                      <input type="radio" id="pc-3"/>
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  ))}
+                </div>
+            </TabPanel>
+            <TabPanel value="5">
+            <div className="row">
+                  {products.slice(0, 8).map((product) => (
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                      <div class="product__item">
+                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}>
+                              <span class="label">New</span>
+                              <ul class="product__hover">
+                                  {/* <li><a href="#"><img src={heart} alt=""/></a></li>
+                                  <li><a href="#"><img src={compare} alt=""/> <span>Compare</span></a></li>
+                                  <li><a href="#"><img src={search} alt=""/></a></li> */}
+                              </ul>
+                          </div>
+                          <div class="product__item__text">
+                              <h6>{product.name}</h6>
+                              <a href="#" class="add-cart">+ Add To Cart</a>
+                              <div class="rating">
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                                  <i class="fa fa-star-o"></i>
+                              </div>
+                              <h5>{product.price}</h5>
+                              <div class="product__color__select">
+                                  <label for="pc-1">
+                                      <input type="radio" id="pc-1"/>
+                                  </label>
+                                  <label class="active black" for="pc-2">
+                                      <input type="radio" id="pc-2"/>
+                                  </label>
+                                  <label class="grey" for="pc-3">
+                                      <input type="radio" id="pc-3"/>
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  ))}
+                </div>
+            </TabPanel>
+          </TabContext>
+        </Box>
+      </div>
     </div>
   );
-};
+}
 
-export default DataComponent;
+export default ProductList;
