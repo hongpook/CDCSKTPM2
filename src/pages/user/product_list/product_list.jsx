@@ -4,8 +4,6 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import Grid from "component/Grid";
-import { SectionBody } from "component/SectionBody";
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {

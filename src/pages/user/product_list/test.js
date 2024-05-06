@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-function Test() {
-  const [data, setData] = useState([]);
+const ProductList = ({ addToCart }) => {
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/blog');
-        setData(response.data);
+        const response = await axios.get('http://localhost:3001/products');
+        setProducts(response.data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching products:', error);
       }
     };
 
-    fetchData();
+    fetchProducts();
   }, []);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    alert(`Added ${product.name} to cart`);
+  };
 
   return (
     <div>
-      <h1>Data from PostgreSQL</h1>
+      <h2>Available Items</h2>
       <ul>
-        {data.map(item => (
-          <li key={item.id}>
-            <div>Name: {item.name}</div>
-            <div
-                    class="product__item__pic set-bg"
-                    style={{ backgroundImage: `url(${require('../images/blogs/' + item.image)})` }}
-                >
-            </div>
-            <div>Content: {item.content}</div>
+        {products.map((product, index) => (
+          <li key={index}>
+            {product.name} - ${product.price} 
+            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
 
-export default Test;
+export default ProductList;

@@ -4,6 +4,9 @@ import axios from 'axios';
 import { AiOutlineRight, AiOutlineRetweet  } from "react-icons/ai";
 import { BsFillStarFill,  BsFillHeartFill } from "react-icons/bs";
 import PriceComponent from 'format_price';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
 
 function ProductDetail() {
     const { id } = useParams();
@@ -33,7 +36,9 @@ function ProductDetail() {
         setActiveTab(tabId);
     };
 
+    
     return (
+        
         <div>
             {product ? (
                 <>
@@ -185,42 +190,62 @@ function ProductDetail() {
                                 {/* Tabs content */}
                                 <div className="row">
                                     <div className="col-lg-12">
-                                        <div className="product__details__tab">
-                                            <ul className="nav nav-tabs" role="tablist">
-                                                <li className="nav-item">
-                                                    <a className={`nav-link ${activeTab === "tabs-5" ? "active" : ""}`} data-toggle="tab" href="#tabs-5" role="tab" onClick={() => handleTabClick("tabs-5")}>Description</a>
-                                                </li>
-                                                <li className="nav-item">
-                                                    <a className={`nav-link ${activeTab === "tabs-6" ? "active" : ""}`} data-toggle="tab" href="#tabs-6" role="tab" onClick={() => handleTabClick("tabs-6")}>Customer Previews(5)</a>
-                                                </li>
-                                                <li className="nav-item">
-                                                    <a className={`nav-link ${activeTab === "tabs-7" ? "active" : ""}`} data-toggle="tab" href="#tabs-7" role="tab" onClick={() => handleTabClick("tabs-7")}>Additional information</a>
-                                                </li>
-                                            </ul>
-                                            <div className="tab-content">
-                                                <div className={`tab-pane ${activeTab === "tabs-5" ? "active" : ""}`} id="tabs-5" role="tabpanel">
-                                                    <div className="product__details__tab__content">
-                                                        <div className="product__details__tab__content__item">
-                                                            <h5>Products 1</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className={`tab-pane ${activeTab === "tabs-6" ? "active" : ""}`} id="tabs-6" role="tabpanel">
-                                                    <div className="product__details__tab__content">
-                                                        <div className="product__details__tab__content__item">
-                                                            <h5>Products 2</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className={`tab-pane ${activeTab === "tabs-7" ? "active" : ""}`} id="tabs-7" role="tabpanel">
-                                                    <div className="product__details__tab__content">
-                                                        <div className="product__details__tab__content__item">
-                                                            <h5>Products 3</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <Box className="product__details__tab">
+                                            <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'center' }}>
+                                                <Tabs
+                                                value={activeTab}
+                                                onChange={(event, newValue) => handleTabClick(newValue)}
+                                                aria-label="product tabs"
+                                                >
+                                                <Tab label="Description" value="tabs-5" sx={{ minWidth: 'unset', textAlign: 'center' }} />
+                                                <Tab label="Customer Previews(5)" value="tabs-6" sx={{ minWidth: 'unset', textAlign: 'center' }} />
+                                                <Tab label="Additional information" value="tabs-7" sx={{ minWidth: 'unset', textAlign: 'center' }} />
+                                                </Tabs>
+                                            </Box>
+                                            <Box className="tab-content">
+                                                <Box
+                                                role="tabpanel"
+                                                hidden={activeTab !== "tabs-5"}
+                                                id="tabs-5"
+                                                >
+                                                <Box className="product__details__tab__content">
+                                                    <Box className="product__details__tab__content__item">
+                                                    <Box className='row'>
+                                                        <Box className='col-6'>
+                                                        <h5>{product.name}</h5>
+                                                        <p>{product.descriptions}</p>
+                                                        </Box>
+                                                        <Box className='col-6'>
+                                                        <img src={require("../images/products/" + product.image)} alt="" />
+                                                        </Box>
+                                                    </Box>
+                                                    </Box>
+                                                </Box>
+                                                </Box>
+                                                <Box
+                                                role="tabpanel"
+                                                hidden={activeTab !== "tabs-6"}
+                                                id="tabs-6"
+                                                >
+                                                <Box className="product__details__tab__content">
+                                                    <Box className="product__details__tab__content__item">
+                                                    <h5>Products 2</h5>
+                                                    </Box>
+                                                </Box>
+                                                </Box>
+                                                <Box
+                                                role="tabpanel"
+                                                hidden={activeTab !== "tabs-7"}
+                                                id="tabs-7"
+                                                >
+                                                <Box className="product__details__tab__content">
+                                                    <Box className="product__details__tab__content__item">
+                                                    <p>{product.product_info}</p>
+                                                    </Box>
+                                                </Box>
+                                                </Box>
+                                            </Box>
+                                        </Box>
                                     </div>
                                 </div>
                             </div>

@@ -15,7 +15,7 @@
       tr {
         
         th {
-          color: $heading-color;
+          color: map.get($theme-color, "heading-color");
           font-size: 16px;
           font-weight: 700;
           text-transform: uppercase;
@@ -46,7 +46,7 @@
               padding-top: 21px;
 
               h6 {
-                color: $heading-color;
+                color: map.get($theme-color, "heading-color");
                 font-size: 15px;
                 font-weight: 600;
                 margin-bottom: 10px;
@@ -71,7 +71,7 @@
                   width: 50px;
                   border: none;
                   text-align: center;
-                  color: $heading-color;
+                  color: map.get($theme-color, "heading-color");
                   font-size: 16px;
                 }
 
@@ -86,7 +86,7 @@
           }
 
           &.cart__price {
-            color: $heading-color;
+            color: map.get($theme-color, "heading-color");
             font-size: 18px;
             font-weight: 700;
             width: 140px;
@@ -96,7 +96,7 @@
 
             i {
               font-size: 18px;
-              color: $heading-color;
+              color: map.get($theme-color, "heading-color");
               height: 40px;
               width: 40px;
               background: #f3f2ee;
@@ -117,9 +117,10 @@
     text-align: right;
 
     a {
-      color: $white-color;
-      background: $heading-color;
-      border-color: $heading-color;
+      color: map.get($theme-color, "white-color");
+      background: map.get($theme-color, "heading-color");
+      border-color: map.get($theme-color, "heading-color");
+      text-decoration: none;
 
       i {
         margin-right: 5px;
@@ -128,7 +129,7 @@
   }
 
   a {
-    color: $heading-color;
+    color: map.get($theme-color, "heading-color");
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -136,6 +137,7 @@
     border: 1px solid #e1e1e1;
     padding: 14px 35px;
     display: inline-block;
+    text-decoration: none;
   }
 }
 
@@ -143,7 +145,7 @@
   margin-bottom: 60px;
 
   h6 {
-    color: $heading-color;
+    color: map.get($theme-color, "heading-color");
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 35px;
@@ -167,11 +169,11 @@
 
     button {
       font-size: 14px;
-      color: $white-color;
+      color: map.get($theme-color, "primary-color");
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      background: $heading-color;
+      background: map.get($theme-color, "heading-color");
       padding: 0 30px;
       border: none;
       position: absolute;
@@ -187,7 +189,7 @@
   padding: 35px 40px 40px;
 
   h6 {
-    color: $heading-color;
+    color: map.get($theme-color, "heading-color");
     text-transform: uppercase;
     margin-bottom: 12px;
   }
@@ -204,7 +206,7 @@
 
       span {
         font-weight: 700;
-        color: $primary-color;
+        color: map.get($theme-color, "primary-color");
         float: right;
       }
     }
@@ -215,5 +217,6 @@
     padding: 12px 10px;
     text-align: center;
     letter-spacing: 2px;
+    text-decoration: none;
   }
 }

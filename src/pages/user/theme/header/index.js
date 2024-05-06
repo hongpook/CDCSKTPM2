@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import "../header/style.scss"
 import {  AiOutlineDown, AiOutlineMenu } from "react-icons/ai";
@@ -6,57 +6,9 @@ import logo from "../../../../assets/imgs/Adidas_Logo.png";
 import cart from "../../../../assets/imgs/imgIcon/cart.png";
 import heart from "../../../../assets/imgs/imgIcon/heart.png";
 import search from "../../../../assets/imgs/imgIcon/search.png";
-import { ROUTERS } from 'utils/router';
 
 const Header = () =>{
 
-
-    const [menus, setMenus] = useState([
-        {
-            name: 'Home',
-            path: ROUTERS.USER.HOME,
-        },
-        {
-            name: 'Shop',
-            path: ROUTERS.USER.SHOP,
-        },
-        {
-            name: 'Pages',
-            path: ROUTERS.USER.HOME,
-            isShowSubMenu: false,
-            child:[
-                {
-                    name: 'About Us',
-                    path: ROUTERS.USER.ABOUT_US,
-                },
-                {
-                    name: 'Shop Detail',
-                    path: ROUTERS.USER.PRODUCT,
-                },
-                {
-                    name: 'Shopping Cart',
-                    path: ROUTERS.USER.HOME,
-                },
-                {
-                    name: 'Check Out',
-                    path: ROUTERS.USER.HOME,
-                },
-                {
-                    name: 'Blog Detail',
-                    path: ROUTERS.USER.HOME,
-                }
-            ]
-        },
-        {
-            name: 'Blog',
-            path: ROUTERS.USER.BLOG,
-        },
-        {
-            name: 'Contact',
-            path: ROUTERS.USER.CONTACT,
-        }
-
-    ])
     return (
         <div className='header '>
 
@@ -101,47 +53,7 @@ const Header = () =>{
                     <div className="col-lg-6 col-md-6">
                         <nav className="header__menu mobile-menu">
                             <ul>
-                                {/* navbar test */}
-                                {/* {
-                                    menus?.map((menu, menuKey) =>(
-                                        <li key={menuKey} className={menuKey === 0 ? "active" : ""}> 
-                                            <Link to={menu?.path}>
-                                                {menu?.name}
-                                            </Link>
-
-                                            {
-                                                menu.child && (
-                                                    <ul className="dropdown">
-                                                        {
-                                                            menu.child.map((childItem, childKey) =>(
-                                                                <li key={`${menuKey} - ${childKey}`}>
-                                                                    <Link to={childItem.path}>
-                                                                        {childItem.name}
-                                                                    </Link>
-                                                                </li>
-                                                            ))
-                                                        }
-                                                    </ul>
-                                                )
-                                            }
-                                        </li>
-                                    ))
-                                } */}
-
-                                {/* navbar gốc */}
-                                {/* <li className="active"><Link to="/">Home</Link></li>
-                                <li className=""><Link to="/shop">Shop</Link></li>
-                                <li><Link to="#">Pages</Link>
-                                    <ul className="dropdown">
-                                        <li><Link to="/aboutUs">About Us</Link></li>
-                                        <li><Link to="/product">Shop Details</Link></li>
-                                        <li><Link to="/productList">Shopping Cart</Link></li>
-                                        <li><Link to="">Check Out</Link></li>
-                                        <li><Link to="">Blog Details</Link></li>
-                                    </ul>
-                                </li>
-                                <li className=""><Link to="/blogs">Blog</Link></li>
-                                <li className=""><Link to="/contact">Contacts</Link></li> */}
+                                
                                 
                                 <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
                                 <li><NavLink to="/shop" activeClassName="active">Shop</NavLink></li>
@@ -152,7 +64,7 @@ const Header = () =>{
                                     <li><NavLink to="/product" activeClassName="active">Shop Details</NavLink></li>
                                     <li><NavLink to="/productList" activeClassName="active">Shopping Cart</NavLink></li>
                                     <li><NavLink to="" activeClassName="active">Check Out</NavLink></li>
-                                    <li><NavLink to="" activeClassName="active">Blog Details</NavLink></li>
+                                    <li><NavLink to="/cart2" activeClassName="active">Blog Details</NavLink></li>
                                 </ul>
                                 </li>
                                 <li><NavLink to="/blogs" activeClassName="active">Blog</NavLink></li>
@@ -170,10 +82,10 @@ const Header = () =>{
                                 <img src={heart} alt=""/>
 
                             </Link>
-                            <Link to="">
+                            <Link to="/cart">
                                 <img src={cart} alt=""/>
                             </Link>
-                            <div class="price">$0.00</div>
+                            <div class="price"></div>
                         </div>
                     </div>
                 </div>

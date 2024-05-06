@@ -16,6 +16,9 @@ import Footer from 'pages/user/theme/footer';
 import LoginPage from 'pages/user/login/login';
 import ProductList from 'pages/user/product_list/product_list';
 import SearchProduct from 'pages/user/search/search';
+import BlogDetail from 'pages/user/blog_detail/blog_detail';
+import Cart from 'pages/user/cart/cart';
+import ShoppingCart from 'pages/user/product_list/test';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -30,9 +33,12 @@ root.render(
           <Route path="contact" element={<Contact />} />
           <Route path="aboutUs" element={<AboutUs />} />
           <Route path="blogs" element={<Blogs />} />
+          <Route path="blogs/:id" element={<BlogDetail />} />
           <Route path="products/:id" element={<ProductDetail />} />
           <Route path="productList" element={<ProductList />} />
           <Route path="search" element={<SearchProduct />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="cart2" element={<ShoppingCart />} />
         </Route>
       </Routes>
     <Footer/>

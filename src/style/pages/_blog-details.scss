@@ -12,7 +12,7 @@
 .blog__hero__text {
 
     h2 {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-size: 42px;
         font-weight: 700;
         line-height: 50px;
@@ -75,7 +75,7 @@
     top: 0;
 
     span {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-size: 20px;
         text-transform: uppercase;
         font-weight: 700;
@@ -90,7 +90,7 @@
             margin-bottom: 15px;
 
             a {
-                color: $white-color;
+                color: map.get($theme-color, "white-color");
                 font-size: 18px;
                 height: 46px;
                 display: inline-block;
@@ -138,7 +138,7 @@
 
     i {
         font-size: 16px;
-        color: $white-color;
+        color: map.get($theme-color, "heading-color");
         height: 50px;
         width: 50px;
         background: #e53637;
@@ -151,7 +151,7 @@
     }
 
     p {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-size: 18px;
         font-weight: 600;
         font-style: italic;
@@ -187,7 +187,7 @@
     display: inline-block;
 
     h5 {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-weight: 700;
     }
 }
@@ -197,7 +197,7 @@
 
     a {
         display: inline-block;
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-weight: 700;
         margin-right: 10px;
 
@@ -242,7 +242,7 @@
     }
 
     h5 {
-        color: $heading-color;
+        color: map.get($theme-color, "heading-color");
         font-size: 20px;
         line-height: 30px;
         font-weight: 700;
@@ -268,7 +268,7 @@
             font-size: 15px;
             color: #b7b7b7;
             margin-bottom: 30px;
-            @include transition(all, .3s);
+            // @include transition(all, .3s);
         
             &::placeholder {
               color: #b7b7b7;
@@ -289,7 +289,7 @@
             color: #b7b7b7;
             margin-bottom: 24px;
             resize: none;
-            @include transition(all, .3s);
+            // @include transition(all, .3s);
         
             &::placeholder {
               color: #b7b7b7;
