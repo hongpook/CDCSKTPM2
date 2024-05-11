@@ -45,7 +45,7 @@ const BlogDetail = () => {
                         <div className="col-lg-12">
                             <div className="blog__details__pic">
                                 {/* <img src={require("../images/blogs/" + blog.image)}  alt={blog.name} />  */}
-                                <img src={require('../images/blogs/samba_size_guide..jpg')}/> 
+                                {blog.image && <img src={require('../images/blogs/' + blog.image)} />}
                             </div>
                         </div>
                         <div class="col-lg-8">

@@ -5,6 +5,11 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { Link } from "react-router-dom";
+import heart from "../assets/imgs/imgIcon/heart.png";
+import compare from "../assets/imgs/imgIcon/compare.png";
+import search from "../assets/imgs/imgIcon/search.png";
+import { BsFillStarFill } from "react-icons/bs";
+import PriceComponent from "format_price";
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -14,7 +19,7 @@ function shuffleArray(array) {
   return array;
 }
 
-function ProductList() {
+function ProductIntro() {
   const [value, setValue] = useState("1");
   const [products, setProducts] = useState([]);
 
@@ -56,25 +61,27 @@ function ProductList() {
                   {products.slice(0, 8).map((product) => (
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                       <div class="product__item">
-                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}>
+                      <Link to={`/products/${product.id}`}>
+                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../pages/user/images/products/' + product.image)})` }}>
                               <span class="label">New</span>
                               <ul class="product__hover">
-                                  {/* <li><a href="#"><img src={heart} alt=""/></a></li>
-                                  <li><a href="#"><img src={compare} alt=""/> <span>Compare</span></a></li>
-                                  <li><a href="#"><img src={search} alt=""/></a></li> */}
+                                  <li><Link to="#"><img src={heart} alt=""/></Link></li>
+                                  <li><Link to="#"><img src={compare} alt=""/> <span>Compare</span></Link></li>
+                                  <li><Link to="/search"><img src={search} alt=""/></Link></li>
                               </ul>
                           </div>
+                          </Link>
                           <div class="product__item__text">
                               <h6>{product.name}</h6>
                               <a href="#" class="add-cart">+ Add To Cart</a>
                               <div class="rating">
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
+                                  <BsFillStarFill/>
+                                  <BsFillStarFill/>
+                                  <BsFillStarFill/>
+                                  <BsFillStarFill/>
+                                  <BsFillStarFill/>
                               </div>
-                              <h5>{product.price}</h5>
+                              <h5><PriceComponent price={product.price}/></h5>
                               <div class="product__color__select">
                                   <label for="pc-1">
                                       <input type="radio" id="pc-1"/>
@@ -98,12 +105,12 @@ function ProductList() {
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                       <div class="product__item">
                         <Link to={`/products/${product.id}`}>
-                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}>
+                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../pages/user/images/products/' + product.image)})` }}>
                               <span class="label">New</span>
                               <ul class="product__hover">
-                                  {/* <li><a href="#"><img src={heart} alt=""/></a></li>
-                                  <li><a href="#"><img src={compare} alt=""/> <span>Compare</span></a></li>
-                                  <li><a href="#"><img src={search} alt=""/></a></li> */}
+                                  <li><Link to="#"><img src={heart} alt=""/></Link></li>
+                                  <li><Link to="#"><img src={compare} alt=""/> <span>Compare</span></Link></li>
+                                  <li><Link to="/search"><img src={search} alt=""/></Link></li>
                               </ul>
                           </div>
                           </Link>
@@ -111,13 +118,14 @@ function ProductList() {
                               <h6>{product.name}</h6>
                               <a href="#" class="add-cart">+ Add To Cart</a>
                               <div class="rating">
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
+                                  <BsFillStarFill/>
+                                  <BsFillStarFill/>
+                                  <BsFillStarFill/>
+                                  <BsFillStarFill/>
+                                  <BsFillStarFill/>
+
                               </div>
-                              <h5>{product.price}</h5>
+                              <h5><PriceComponent price={product.price}/></h5>
                               <div class="product__color__select">
                                   <label for="pc-1">
                                       <input type="radio" id="pc-1"/>
@@ -140,25 +148,28 @@ function ProductList() {
                   {products.slice(0, 8).map((product) => (
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                       <div class="product__item">
-                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}>
+                      <Link to={`/products/${product.id}`}>
+                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../pages/user/images/products/' + product.image)})` }}>
                               <span class="label">New</span>
                               <ul class="product__hover">
-                                  {/* <li><a href="#"><img src={heart} alt=""/></a></li>
-                                  <li><a href="#"><img src={compare} alt=""/> <span>Compare</span></a></li>
-                                  <li><a href="#"><img src={search} alt=""/></a></li> */}
+                                  <li><Link to="#"><img src={heart} alt=""/></Link></li>
+                                  <li><Link to="#"><img src={compare} alt=""/> <span>Compare</span></Link></li>
+                                  <li><Link to="/search"><img src={search} alt=""/></Link></li>
                               </ul>
                           </div>
+                          </Link>
                           <div class="product__item__text">
                               <h6>{product.name}</h6>
                               <a href="#" class="add-cart">+ Add To Cart</a>
                               <div class="rating">
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                  
                               </div>
-                              <h5>{product.price}</h5>
+                              <h5><PriceComponent price={product.price}/></h5>
                               <div class="product__color__select">
                                   <label for="pc-1">
                                       <input type="radio" id="pc-1"/>
@@ -181,25 +192,28 @@ function ProductList() {
                   {products.slice(0, 8).map((product) => (
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                       <div class="product__item">
-                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}>
+                      <Link to={`/products/${product.id}`}>
+                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../pages/user/images/products/' + product.image)})` }}>
                               <span class="label">New</span>
                               <ul class="product__hover">
-                                  {/* <li><a href="#"><img src={heart} alt=""/></a></li>
-                                  <li><a href="#"><img src={compare} alt=""/> <span>Compare</span></a></li>
-                                  <li><a href="#"><img src={search} alt=""/></a></li> */}
+                                  <li><Link to="#"><img src={heart} alt=""/></Link></li>
+                                  <li><Link to="#"><img src={compare} alt=""/> <span>Compare</span></Link></li>
+                                  <li><Link to="/search"><img src={search} alt=""/></Link></li>
                               </ul>
                           </div>
+                          </Link>
                           <div class="product__item__text">
                               <h6>{product.name}</h6>
                               <a href="#" class="add-cart">+ Add To Cart</a>
                               <div class="rating">
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                  
                               </div>
-                              <h5>{product.price}</h5>
+                              <h5><PriceComponent price={product.price}/></h5>
                               <div class="product__color__select">
                                   <label for="pc-1">
                                       <input type="radio" id="pc-1"/>
@@ -222,25 +236,28 @@ function ProductList() {
                   {products.slice(0, 8).map((product) => (
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                       <div class="product__item">
-                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}>
+                      <Link to={`/products/${product.id}`}>
+                          <div class="product__item__pic set-bg" style={{ backgroundImage: `url(${require('../pages/user/images/products/' + product.image)})` }}>
                               <span class="label">New</span>
                               <ul class="product__hover">
-                                  {/* <li><a href="#"><img src={heart} alt=""/></a></li>
-                                  <li><a href="#"><img src={compare} alt=""/> <span>Compare</span></a></li>
-                                  <li><a href="#"><img src={search} alt=""/></a></li> */}
+                                  <li><Link to="#"><img src={heart} alt=""/></Link></li>
+                                  <li><Link to="#"><img src={compare} alt=""/> <span>Compare</span></Link></li>
+                                  <li><Link to="/search"><img src={search} alt=""/></Link></li>
                               </ul>
                           </div>
+                          </Link>
                           <div class="product__item__text">
                               <h6>{product.name}</h6>
                               <a href="#" class="add-cart">+ Add To Cart</a>
                               <div class="rating">
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                <BsFillStarFill/>
+                                  
                               </div>
-                              <h5>{product.price}</h5>
+                              <h5><PriceComponent price={product.price}/></h5>
                               <div class="product__color__select">
                                   <label for="pc-1">
                                       <input type="radio" id="pc-1"/>
@@ -265,4 +282,4 @@ function ProductList() {
   );
 }
 
-export default ProductList;
+export default ProductIntro;

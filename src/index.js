@@ -19,11 +19,16 @@ import SearchProduct from 'pages/user/search/search';
 import BlogDetail from 'pages/user/blog_detail/blog_detail';
 import Cart from 'pages/user/cart/cart';
 import ShoppingCart from 'pages/user/product_list/test';
+import GetUsers from 'pages/admin/users/getUser';
+import AddUser from 'pages/admin/users/addUser';
+import CreateBlogForm from 'pages/admin/blogs/addNewBlog';
+import BlogList from 'pages/admin/admin';
+import UpdateBlogForm from 'pages/admin/blogs/updateBlog';
+import AdminAdidas from 'pages/admin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    {/* <RouterCustom /> */}
     <Header/>
     <Routes>
         <Route>
@@ -39,9 +44,16 @@ root.render(
           <Route path="search" element={<SearchProduct />} />
           <Route path="cart" element={<Cart />} />
           <Route path="cart2" element={<ShoppingCart />} />
+          <Route path="test" element={<GetUsers />} />
+          <Route path="test2" element={<AddUser />} />
+          <Route path="test3" element={<CreateBlogForm />} />
+          <Route path="test4" element={<BlogList />} />
+          <Route path="test4/:id" element={<UpdateBlogForm />} />
         </Route>
       </Routes>
     <Footer/>
+
+    {/* <AdminAdidas/> */}
   </BrowserRouter>
 );
 

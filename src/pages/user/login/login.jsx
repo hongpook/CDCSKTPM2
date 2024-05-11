@@ -1,60 +1,48 @@
-import React from 'react';
-import {
-  MDBContainer,
-  MDBInput,
-  MDBCheckbox,
-  MDBBtn,
-  MDBIcon
-}
-from 'mdb-react-ui-kit';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
-import BreadCrumb from 'component/BreadCrumb';
 
-function App() {
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleLogin = () => {
+    fetch('http://localhost:3001/users')
+      .then(response => response.json())
+      .then(users => {
+        const user = users.find(user => user.username === username && user.password === password);
+        if (user) {
+          // Xử lý đăng nhập thành công
+          alert('Đăng nhập thành công!');
+        } else {
+          setError('Tên người dùng hoặc mật khẩu không đúng.');
+        }
+      })
+      .catch(error => {
+        console.error('Lỗi khi lấy danh sách người dùng:', error);
+        setError('Đã xảy ra lỗi. Vui lòng thử lại sau.');
+      });
+  };
+
+  
   return (
     <div>
-      <BreadCrumb title="Login"/>
-      <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
-
-        <MDBInput wrapperClass='mb-4' placeholder='Email address' id='form1' type='email'/>
-        <MDBInput wrapperClass='mb-4' placeholder='Password' id='form2' type='password'/>
-
-        <div className="d-flex justify-content-between mx-3 mb-4">
-          <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
-          <a href="!#">Forgot password?</a>
-        </div>
-
-        <MDBBtn className="mb-4">Sign in</MDBBtn>
-
-        <div className="text-center">
-          <p>Not a member? <Link to="/">Register</Link></p>
-          <p>or sign up with:</p>
-
-          <div className='d-flex justify-content-between mx-auto' style={{width: '40%'}}>
-            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-              <MDBIcon fab icon='facebook-f' size="sm"/>
-            </MDBBtn>
-
-            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-              <MDBIcon fab icon='twitter' size="sm"/>
-            </MDBBtn>
-
-            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-              <MDBIcon fab icon='google' size="sm"/>
-            </MDBBtn>
-
-            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-              <MDBIcon fab icon='github' size="sm"/>
-            </MDBBtn>
-
-          </div>
-        </div>
-
-      </MDBContainer>
-
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={handleLogin}>Login</button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
-}
+};
 
-export default App;
+export default Login;
