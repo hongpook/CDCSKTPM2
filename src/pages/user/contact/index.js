@@ -14,17 +14,16 @@ const Contact = () =>{
                                 <div class="section-title">
                                     <span>Information</span>
                                     <h2>Contact Us</h2>
-                                    <p>As you might expect of a company that began as a high-end interiors contractor, we pay
-                                        strict attention.</p>
+                                    <p>As you might expect of a company that started out as a high-end fashion house, we pay close attention.</p>
                                 </div>
                                 <ul>
                                     <li>
                                         <h4>Viet Nam</h4>
-                                        <p>195 E Parker Square Dr, Parker, CO 801 <br />+43 982-314-0958</p>
+                                        <p>12 Đ. Phan Văn Trị, Phường 7, Gò Vấp, Thành phố Hồ Chí Minh <br />+83 39-442-1371</p>
                                     </li>
                                     <li>
-                                        <h4>France</h4>
-                                        <p>109 Avenue Léon, 63 Clermont-Ferrand <br />+12 345-423-9893</p>
+                                        <h4>Malaysia</h4>
+                                        <p>Lot 155, First Floor, Suria KLCC, 50088, Kuala Lumpur, Malaysia. <br />+60 03-22018048</p>
                                     </li>
                                 </ul>
                             </div>

@@ -8,6 +8,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import CutContentCommponent from "component/cutContent";
+import Pagination from "component/Pagination_relatedProduct";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -380,6 +381,7 @@ function ProductDetail() {
               <div class="row">
                 <div class="col-lg-12">
                   <h3 class="related-title">Related Product</h3>
+                  <Pagination/>
                 </div>
               </div>
               <div class="row"></div>

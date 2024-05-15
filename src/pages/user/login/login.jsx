@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import './style.scss';
+
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -13,7 +14,8 @@ const Login = () => {
         const user = users.find(user => user.username === username && user.password === password);
         if (user) {
           // Xử lý đăng nhập thành công
-          alert('Đăng nhập thành công!');
+          const localUser = window.localStorage.setItem("user", user)
+          window.location.href = '/admin';
         } else {
           setError('Tên người dùng hoặc mật khẩu không đúng.');
         }
@@ -21,26 +23,29 @@ const Login = () => {
       .catch(error => {
         console.error('Lỗi khi lấy danh sách người dùng:', error);
         setError('Đã xảy ra lỗi. Vui lòng thử lại sau.');
-      });
+      }); 
   };
 
   
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+    <div className="login-container">
+      <div className="login-form">
+        <h2>Login for admin</h2>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={handleLogin}>Login</button>
+        {error && <p className="error">{error}</p>}
+      </div>
     </div>
   );
 };

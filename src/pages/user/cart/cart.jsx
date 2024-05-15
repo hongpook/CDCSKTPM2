@@ -2,7 +2,9 @@ import React from "react";
 import BreadCrumb from "component/BreadCrumb";
 import { Link } from "react-router-dom";
 import { BsArrowRepeat } from "react-icons/bs";
-import './style.scss'
+import './style.scss';
+import PriceComponent from "format_price";
+
 const Cart = () =>{
     return (
         <>
@@ -16,6 +18,7 @@ const Cart = () =>{
                                     <thead>
                                         <tr>
                                             <th>Product</th>
+                                            <th>Name</th>
                                             <th>Quantity</th>
                                             <th>Total</th>
                                             <th></th>
@@ -27,10 +30,10 @@ const Cart = () =>{
                                                 <div class="product__cart__item__pic">
                                                     <img className="imgCart" src={require('../images/products/AoDau_San_Khach_DTuyen_Argentina.jpg')} alt=""/>
                                                 </div>
-                                                <div class="product__cart__item__text">
-                                                    <h6>T-shirt Contrast Pocket</h6>
-                                                    <h5>$98.49</h5>
-                                                </div>
+                                                
+                                            </td>
+                                            <td>
+                                                <h6>Áo đấu sân khách đội tuyển Argentina 2024</h6>
                                             </td>
                                             <td class="quantity__item">
                                                 <div class="quantity">
@@ -39,7 +42,7 @@ const Cart = () =>{
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="cart__price">$ 30.00</td>
+                                            <td class="cart__price"><PriceComponent price='2200000'/></td>
                                             <td class="cart__close"><i class="fa fa-close"></i></td>
                                         </tr>
 
@@ -48,10 +51,9 @@ const Cart = () =>{
                                                 <div class="product__cart__item__pic">
                                                     <img className="imgCart" src={require('../images/products/Giay_Samba_OG_WonderWhite.jpg')} alt=""/>
                                                 </div>
-                                                <div class="product__cart__item__text">
-                                                    <h6>T-shirt Contrast Pocket</h6>
-                                                    <h5>$98.49</h5>
-                                                </div>
+                                            </td>
+                                            <td>
+                                                <h6>Giày Samba OG Wonder White</h6>
                                             </td>
                                             <td class="quantity__item">
                                                 <div class="quantity">
@@ -60,7 +62,7 @@ const Cart = () =>{
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="cart__price">$ 30.00</td>
+                                            <td class="cart__price"><PriceComponent price='2700000'/></td>
                                             <td class="cart__close"><i class="fa fa-close"></i></td>
                                         </tr>
                                     </tbody>
@@ -90,8 +92,8 @@ const Cart = () =>{
                             <div class="cart__total">
                                 <h6>Cart total</h6>
                                 <ul>
-                                    <li>Subtotal <span>$ 169.50</span></li>
-                                    <li>Total <span>$ 169.50</span></li>
+                                    <li>Subtotal <span><PriceComponent price='4900000'/></span></li>
+                                    <li>Total <span><PriceComponent price='4900000'/></span></li>
                                 </ul>
                                 <a href="#" class="primary-btn">Proceed to checkout</a>
                             </div>

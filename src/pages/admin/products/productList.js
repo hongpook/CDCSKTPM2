@@ -5,6 +5,7 @@ import { Card, TextField, Button, Toolbar, Table, TableHead, TableRow, TableBody
 import { Link } from 'react-router-dom';
 
 const ProductList = () => {
+  
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("");
   const [page, setPage] = useState(1);
@@ -60,8 +61,8 @@ const ProductList = () => {
 
   return (
     <div>
-      <Title title="Product list" />
-      <h1>Product List</h1>
+      <Title title="Product list " />
+      <h1>Product List  </h1>
       <TextField
         label="Search"
         value={filter}
