@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Card, TextField, Button, Table, TableHead, TableRow, TableBody, TableCell } from "@mui/material";
+import { Card, Button, Table, TableHead, TableRow, TableBody, TableCell } from "@mui/material";
+import axios from 'axios';
+import { Link } from "react-router-dom";
 
 function GetUsers() {
   const [users, setUsers] = useState([]);
@@ -11,6 +13,9 @@ function GetUsers() {
   const fetchData = async () => {
     try {
       const response = await fetch("http://localhost:3001/users");
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
       const json = await response.json();
       setUsers(json);
     } catch (error) {
@@ -20,10 +25,9 @@ function GetUsers() {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:3001/users/${id}`, {
-        method: 'DELETE'
-      });
+      await axios.delete(`http://localhost:3001/users/${id}`);
       setUsers(users.filter(user => user.id !== id));
+      alert("User đã được xóa!!");
     } catch (error) {
       console.error('Error deleting user:', error);
     }
@@ -36,8 +40,13 @@ function GetUsers() {
 
   return (
     <div>
+      <br/>
       <Card>
-        <h2>User List</h2>
+        <div className="row"> 
+          <h2 className="col-9" >User List</h2>
+          <Link sx={{backgroundColor: 'green', height: '48px', marginTop: '7px'}} className="col-3" to='create'>Thêm User mới</Link>
+        </div>
+        <br/>
         <Table>
           <TableHead>
             <TableRow>

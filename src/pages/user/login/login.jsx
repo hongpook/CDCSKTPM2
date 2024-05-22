@@ -14,7 +14,7 @@ const Login = () => {
         const user = users.find(user => user.username === username && user.password === password);
         if (user) {
           // Xử lý đăng nhập thành công
-          const localUser = window.localStorage.setItem("user", user)
+          const localUser =  window.localStorage.setItem('user', JSON.stringify(user))
           window.location.href = '/admin';
         } else {
           setError('Tên người dùng hoặc mật khẩu không đúng.');

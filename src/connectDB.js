@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 const bodyParser = require('body-parser');
+const { body, param, validationResult } = require('express-validator');
 
 const app = express();
 const port = 3001;
@@ -212,28 +213,45 @@ app.delete('/blogs/:id', async (req, res) => {
 });
 
 // Endpoint để cập nhật một bài đăng theo ID
-app.put('/blogs/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { name, content } = req.body;
-
-    // Thực thi truy vấn UPDATE để cập nhật bài đăng trong cơ sở dữ liệu
-    const result = await pool.query('UPDATE blogs SET name = $1, content = $2 WHERE id = $3 RETURNING *', [name, content, id]);
-
-    // Kiểm tra xem có bài đăng nào được cập nhật không
-    if (result.rowCount === 1) {
-      res.json(result.rows[0]); // Trả về bài đăng sau khi cập nhật thành công
-    } else {
-      res.status(404).json({ error: 'Blog post not found' });
+app.put(
+  '/blogs/:id',
+  [
+    param('id').isInt().withMessage('ID must be an integer'),
+    body('name').notEmpty().withMessage('Name is required'),
+    body('content').notEmpty().withMessage('Content is required')
+  ],
+  async (req, res) => {
+    // Xử lý các lỗi xác thực
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
     }
-  } catch (error) {
-    console.error('Error updating blog post:', error);
-    res.status(500).json({ error: 'Failed to update blog post' });
+
+    try {
+      const { id } = req.params;
+      const { name, content } = req.body;
+
+      // Thực thi truy vấn UPDATE để cập nhật bài đăng trong cơ sở dữ liệu
+      const result = await pool.query(
+        'UPDATE blogs SET name = $1, content = $2 WHERE id = $3 RETURNING *',
+        [name, content, id]
+      );
+
+      // Kiểm tra xem có bài đăng nào được cập nhật không
+      if (result.rowCount === 1) {
+        res.json(result.rows[0]); // Trả về bài đăng sau khi cập nhật thành công
+      } else {
+        res.status(404).json({ error: 'Blog post not found' });
+      }
+    } catch (error) {
+      console.error('Error updating blog post:', error);
+      res.status(500).json({ error: 'Failed to update blog post' });
+    }
   }
-});
+);
 
 
-// Define a route to fetch data from the blogs table
+// Define a route to fetch data from the User table
 app.get('/users', async (req, res) => {
   try {
     // Connect to the database
@@ -264,20 +282,39 @@ app.get('/users/:id', async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
   }
 });
+// Endpoint for deleting a blog post by ID
+app.delete('/users/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Execute DELETE query to remove the blog post from the database
+    const result = await pool.query('DELETE FROM users WHERE id = $1', [id]);
+
+    // Check if any rows were affected
+    if (result.rowCount === 1) {
+      res.json({ message: 'User deleted successfully' });
+    } else {
+      res.status(404).json({ error: 'user not found' });
+    }
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({ error: 'Failed to delete user' });
+  }
+});
 
 // Endpoint for creating a user
 app.post('/users', async (req, res) => {
   try {
     // Extract user data from request body
-    const { username, email, password } = req.body;
+    const { username, email, password, img_user } = req.body;
 
     // Insert user data into the database
     const query = `
-      INSERT INTO users (username, email, password)
-      VALUES ($1, $2, $3)
+      INSERT INTO users (username, email, password, img_user)
+      VALUES ($1, $2, $3, $4)
       RETURNING *
     `;
-    const values = [username, email, password];
+    const values = [username, email, password, img_user];
     const result = await pool.query(query, values);
 
     // Return the newly created user

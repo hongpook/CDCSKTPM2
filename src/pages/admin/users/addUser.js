@@ -1,80 +1,78 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CreateUserForm = () => {
+const UserRegistration = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    password: ''
+    password: '',
+    img_user: ''
   });
 
-  const handleInputChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value
-    });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      // Gửi yêu cầu POST tới endpoint '/users' trên server
-      const response = await axios.post('http://localhost:3001/users', {
-        username: formData.username,
-        email: formData.email,
-        password: formData.password
-      });
-      
-      // Xử lý dữ liệu trả về sau khi tạo người dùng thành công
-      alert('New user created:', response.data);
-      
-      // Xóa dữ liệu trong form sau khi tạo thành công
-      setFormData({
-        username: '',
-        email: '',
-        password: ''
-      });
-    } catch (error) {
-      // Xử lý lỗi nếu có
-      alert('Error creating user:', error);
-    }
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  try {
+    // Extracting just the filename from the path
+    const imgFilename = formData.img_user.split('\\').pop();
+
+    // Creating a new formData object with just the filename
+    const formDataWithFilename = {
+      ...formData,
+      img_user: imgFilename
+    };
+
+    const response = await axios.post('http://localhost:3001/users', formDataWithFilename);
+    alert('New user created:');
+    // Handle success, maybe redirect to a different page or show a success message
+  } catch (error) {
+    alert('Error creating user:');
+    // Handle error, maybe show an error message to the user
+  }
   };
+
 
   return (
-    <div>
-      <h2>Create User</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleInputChange}
-          />
+    <div className='container'>
+      <br/>
+      <div >
+        <h2>User Registration</h2>
+        
+
+      </div>
+      <form onSubmit={handleSubmit} className='row'>
+        <div className="col-6">
+          <label htmlFor="username">Username:</label>
+          <input className="col-12" type="text" id="username" name="username" value={formData.username} onChange={handleChange} />
         </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
+        <div className="col-6">
+          <label htmlFor="email">Email:</label>
+          <input className="col-12" type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
-          />
+        <div className="col-6">
+          <label htmlFor="password">Password:</label>
+          <input className="col-12" type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
+
         </div>
-        <button type="submit">Create User</button>
+        <div className="col-6">
+
+          <label htmlFor="img_user">Image URL:</label>
+          <input className="col-12" type="file" id="img_user" name="img_user" value={formData.img_user} onChange={handleChange} />
+        </div>
+        <br/>
+        <div className="col-6">
+
+          <button className="col-3" type="submit">Submit</button> 
+        </div>
       </form>
     </div>
   );
 };
 
-export default CreateUserForm;
+export default UserRegistration;

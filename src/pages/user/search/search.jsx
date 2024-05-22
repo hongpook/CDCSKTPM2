@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import PriceComponent from "../../../format_price";
 import BreadCrumb from 'component/BreadCrumb';
 import { BsSearch } from "react-icons/bs";
+import { AiFillStar } from "react-icons/ai";
+import './style.scss';
 
 const SearchProduct = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -46,15 +48,16 @@ const SearchProduct = () => {
       <BreadCrumb title="Search"/>
       <br/>
       <div className='container'>
-        <div>
+        <div className="search-box">
           <input
             type="text"
             placeholder="Enter product name..."
             value={searchTerm}
             onChange={handleChange}
-            className='col-10'
+            className="search-input"
+            
           />
-          <button className='col-2' onClick={handleSearch}><BsSearch/></button>
+          <button  className="search-button" onClick={handleSearch}><BsSearch/></button>
 
         </div>
         <br/>
@@ -63,7 +66,7 @@ const SearchProduct = () => {
             ? searchResults.map(product => (
               <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix" key={product.id}>
                   <div class="product__item sale">
-                      <Link to={`/shop/${product.id}`}>
+                      <Link to={`/products/${product.id}`}>
                       <div
                           class="product__item__pic set-bg"
                           style={{ backgroundImage: `url(${require('../images/products/' + product.image)})` }}
@@ -94,11 +97,11 @@ const SearchProduct = () => {
                           + Add To Cart{" "}
                       </a>
                       <div class="rating">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star-o"></i>
+                        <AiFillStar />
+                        <AiFillStar />
+                        <AiFillStar />
+                        <AiFillStar />
+                        <AiFillStar />
                       </div>
                       <h5>
                           <PriceComponent price={product.price} />
@@ -118,7 +121,7 @@ const SearchProduct = () => {
                   </div>
               </div>
               ))
-            : null}
+            : <h1>Chưa có sẩn phẩm nào!!</h1>}
         </div>
       </div>
       <br/>

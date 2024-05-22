@@ -49,44 +49,52 @@ const CreateBlogForm = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
+      <br/>
       <h2>Create Blog</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} className='row'>
+        <div className="col-4">
           <label>Blog Name:</label>
           <input
+          className="col-12"
             type="text"
             name="name"
             value={formData.name}
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="col-4">
           <label>Image:</label>
           <input
+          className="col-12"
             type="file"
             accept="image/*"
             onChange={handleImageChange}
           />
         </div>
-        <div>
+        <div className="col-4">
           <label>Author Name:</label>
           <input
+          className="col-12"
             type="text"
             name="author_name"
             value={formData.author_name}
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="col-12"> 
           <label>Content:</label>
           <textarea
+          className="col-12"
             name="content"
             value={formData.content}
             onChange={handleInputChange}
           />
         </div>
-        <button type="submit">Create Blog</button>
+        <div>
+
+        <button className="col-2" type="submit">Create Blog</button>
+        </div>
       </form>
     </div>
   );

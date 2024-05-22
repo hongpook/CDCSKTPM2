@@ -20,6 +20,7 @@ import BlogDetail from 'pages/user/blog_detail/blog_detail';
 import Cart from 'pages/user/cart/cart';
 import ShoppingCart from 'pages/user/product_list/test';
 import AdminAdidas from 'pages/admin';
+import EditBlogForm from 'pages/admin/blogs/updateBlog';
 
 const user = window.localStorage.getItem("user")
 

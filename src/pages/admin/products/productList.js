@@ -61,17 +61,23 @@ const ProductList = () => {
 
   return (
     <div>
+      <br/>
       <Title title="Product list " />
       <h1>Product List  </h1>
-      <TextField
-        label="Search"
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-        variant="filled"
-        size="small"
-        margin="dense"
-      />
-      <Link to='create'>Thêm sản phẩm</Link>
+      <div className='row'>
+        <TextField
+        className="col-9"
+          label="Search"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          variant="filled"
+          size="small"
+          margin="dense"
+        />
+        <Link sx={{backgroundColor: 'green', height: '48px', marginTop: '7px'}} className="col-3" to='create'>Thêm sản phẩm</Link>
+
+      </div>
+      <br/>
       <Card>
         <Table size="small">
           <TableHead>

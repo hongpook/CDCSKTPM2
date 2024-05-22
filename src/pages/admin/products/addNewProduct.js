@@ -57,12 +57,13 @@ const ProductForm = () => {
   };
 
   return (
-    <div>
-      <h2>Tạo sản phẩm mới</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="container">
+      <br/>
+      <h2>Thêm sản phẩm mới</h2>
+      <form onSubmit={handleSubmit} className="row">
+        <div className="col-8">
           <label htmlFor="name">Tên sản phẩm:</label>
-          <input
+          <input className="col-12"
             type="text"
             id="name"
             name="name"
@@ -71,9 +72,10 @@ const ProductForm = () => {
             required
           />
         </div>
-        <div>
+        <div className="col-4">
           <label htmlFor="image">Ảnh sản phẩm:</label>
           <input
+          className="col-12"
             type="file"
             id="image"
             name="image"
@@ -81,9 +83,10 @@ const ProductForm = () => {
             required
           />
         </div>
-        <div>
+        <div className="col-4">
           <label htmlFor="price">Giá:</label>
           <input
+          className="col-12"
             type="number"
             id="price"
             name="price"
@@ -92,9 +95,10 @@ const ProductForm = () => {
             required
           />
         </div>
-        <div>
+        <div className="col-4">
           <label htmlFor="sale">Giảm giá:</label>
           <input
+          className="col-12"
             type="number"
             id="sale"
             name="sale"
@@ -102,9 +106,10 @@ const ProductForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="col-4">
           <label htmlFor="category">Danh mục:</label>
           <input
+          className="col-12"
             type="text"
             id="category"
             name="category"
@@ -112,9 +117,10 @@ const ProductForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="col-6">
           <label htmlFor="tags">Tags:</label>
           <input
+          className="col-12"
             type="text"
             id="tags"
             name="tags"
@@ -122,45 +128,10 @@ const ProductForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label htmlFor="imgdetail_1">Ảnh chi tiết 1:</label>
-          <input
-            type="file"
-            id="imgdetail_1"
-            name="imgdetail_1"
-            onChange={handleImageChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="imgdetail_2">Ảnh chi tiết 2:</label>
-          <input
-            type="file"
-            id="imgdetail_2"
-            name="imgdetail_2"
-            onChange={handleImageChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="imgdetail_3">Ảnh chi tiết 3:</label>
-          <input
-            type="file"
-            id="imgdetail_3"
-            name="imgdetail_3"
-            onChange={handleImageChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="descriptions">Mô tả:</label>
-          <textarea
-            id="descriptions"
-            name="descriptions"
-            value={formData.descriptions}
-            onChange={handleChange}
-          ></textarea>
-        </div>
-        <div>
+        <div className="col-6">
           <label htmlFor="color">Màu sắc:</label>
           <input
+          className="col-12"
             type="text"
             id="color"
             name="color"
@@ -168,9 +139,51 @@ const ProductForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="col-4">
+          <label htmlFor="imgdetail_1">Ảnh chi tiết 1:</label>
+          <input
+          className="col-12"
+            type="file"
+            id="imgdetail_1"
+            name="imgdetail_1"
+            onChange={handleImageChange}
+          />
+        </div>
+        <div className="col-4">
+          <label htmlFor="imgdetail_2">Ảnh chi tiết 2:</label>
+          <input
+          className="col-12"
+            type="file"
+            id="imgdetail_2"
+            name="imgdetail_2"
+            onChange={handleImageChange}
+          />
+        </div>
+        <div className="col-4">
+          <label htmlFor="imgdetail_3">Ảnh chi tiết 3:</label>
+          <input
+          className="col-12"
+            type="file"
+            id="imgdetail_3"
+            name="imgdetail_3"
+            onChange={handleImageChange}
+          />
+        </div>
+        <div className="col-6">
+          <label htmlFor="descriptions">Mô tả:</label>
+          <textarea
+          className="col-12"
+            id="descriptions"
+            name="descriptions"
+            value={formData.descriptions}
+            onChange={handleChange}
+          ></textarea>
+        </div>
+        
+        <div className="col-6">
           <label htmlFor="product_info">Thông tin sản phẩm:</label>
           <textarea
+          className="col-12"
             id="product_info"
             name="product_info"
             value={formData.product_info}
