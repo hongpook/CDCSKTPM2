@@ -20,38 +20,45 @@ import BlogDetail from 'pages/user/blog_detail/blog_detail';
 import Cart from 'pages/user/cart/cart';
 import ShoppingCart from 'pages/user/product_list/test';
 import AdminAdidas from 'pages/admin';
+import CheckOut from 'pages/checkOut/checkOut';
 import EditBlogForm from 'pages/admin/blogs/updateBlog';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 const user = window.localStorage.getItem("user")
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-  {user ?
-  <>
-  <AdminAdidas />
-    </>
-  : <>
-   <Header/>
-    <Routes>
-        <Route>
-          <Route path='/' element={<Home />} />
-          <Route path="shop" element={<Shop />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="aboutUs" element={<AboutUs />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="blogs/:id" element={<BlogDetail />} />
-          <Route path="products/:id" element={<ProductDetail />} />
-          <Route path="productList" element={<ProductList />} />
-          <Route path="search" element={<SearchProduct />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="cart2" element={<ShoppingCart />} />
-        </Route>
-      </Routes>
-    <Footer/>
-  </>}
-    
-  </BrowserRouter>
+  <Provider store={store}>
+
+    <BrowserRouter>
+    {user ?
+    <>
+    <AdminAdidas />
+      </>
+    : <>
+    <Header/>
+      <Routes>
+          <Route>
+            <Route path='/' element={<Home />} />
+            <Route path="shop" element={<Shop />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="aboutUs" element={<AboutUs />} />
+            <Route path="blogs" element={<Blogs />} />
+            <Route path="blogs/:id" element={<BlogDetail />} />
+            <Route path="products/:id" element={<ProductDetail />} />
+            <Route path="productList" element={<ProductList />} />
+            <Route path="search" element={<SearchProduct />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="cart2" element={<ShoppingCart />} />
+            <Route path="checkOut" element={<CheckOut />} />
+          </Route>
+        </Routes>
+      <Footer/>
+    </>}
+      
+    </BrowserRouter>
+  </Provider>
 );
 

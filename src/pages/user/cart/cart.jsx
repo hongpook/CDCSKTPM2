@@ -4,99 +4,124 @@ import { Link } from "react-router-dom";
 import { BsArrowRepeat } from "react-icons/bs";
 import './style.scss';
 import PriceComponent from "format_price";
+import { useSelector, useDispatch } from 'react-redux';
+import { decreaseQuantity, increaseQuantity, removeCart } from '../../../redux/slice/cartItem';
 
-const Cart = () =>{
+const Cart = () => {
+    const productCart = useSelector((state) => state.cart.CartArr)
+    const dispatch = useDispatch()
+
+    const handleIncrease = (id) => {
+        dispatch(increaseQuantity({ id }))
+    }
+
+    const handleDecrease = (id) => {
+        dispatch(decreaseQuantity({ id }))
+    }
+
+    const handleremoveCart = (id) => {
+        dispatch(removeCart({ id }))
+    }
+
+    const totalPrice = productCart.reduce((total, product) => total + (product.price * product.quantity), 0)
+
     return (
         <>
             <BreadCrumb title="Shopping Cart" />
-            <section class="shopping-cart spad">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="shopping__cart__table">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Product</th>
-                                            <th>Name</th>
-                                            <th>Quantity</th>
-                                            <th>Total</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="product__cart__item">
-                                                <div class="product__cart__item__pic">
-                                                    <img className="imgCart" src={require('../images/products/AoDau_San_Khach_DTuyen_Argentina.jpg')} alt=""/>
-                                                </div>
-                                                
-                                            </td>
-                                            <td>
-                                                <h6>Áo đấu sân khách đội tuyển Argentina 2024</h6>
-                                            </td>
-                                            <td class="quantity__item">
-                                                <div class="quantity">
-                                                    <div class="pro-qty-2">
-                                                        <input type="text" value="1"/>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="cart__price"><PriceComponent price='2200000'/></td>
-                                            <td class="cart__close"><i class="fa fa-close"></i></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="product__cart__item">
-                                                <div class="product__cart__item__pic">
-                                                    <img className="imgCart" src={require('../images/products/Giay_Samba_OG_WonderWhite.jpg')} alt=""/>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h6>Giày Samba OG Wonder White</h6>
-                                            </td>
-                                            <td class="quantity__item">
-                                                <div class="quantity">
-                                                    <div class="pro-qty-2">
-                                                        <input type="text" value="1"/>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="cart__price"><PriceComponent price='2700000'/></td>
-                                            <td class="cart__close"><i class="fa fa-close"></i></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="continue__btn">
-                                        <Link to="/shop">Continue Shopping</Link>
+            <section className="shopping-cart spad">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-8">
+                            {
+                                productCart.length === 0 ? (
+                                    <div className="empty-cart">
+                                        <h2>Your cart is currently empty</h2>
+                                        <Link to="/shop" className="primary-btn">Return to shop</Link>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="continue__btn update__btn">
-                                        <Link to="/"><BsArrowRepeat/> Update cart</Link>
+                                ) : (
+                                    <div className="shopping__cart__table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th>Name</th>
+                                                    <th>Quantity</th>
+                                                    <th>Total</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    productCart.map(product => (
+                                                        <tr key={product.id}>
+                                                            <td className="product__cart__item">
+                                                                <div className="product__cart__item__pic">
+                                                                    <img className="imgCart" src={require('../images/products/' + product.image)} alt="" />
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <h6>{product.name}</h6>
+                                                            </td>
+                                                            <td className="quantity__item">
+                                                                <div className="quantity">
+                                                                    <div className="pro-qty-2">
+                                                                        <button onClick={() => handleIncrease(product.id)}>+</button>
+                                                                        <input type="text" value={product.quantity} readOnly />
+                                                                        <button onClick={() => handleDecrease(product.id)}>-</button>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td className="cart__price"><PriceComponent price={product.price * product.quantity} /></td>
+                                                            <td className="cart__close">
+                                                                <button onClick={() => handleremoveCart(product.id)}>Xóa</button>
+                                                            </td>
+                                                        </tr>
+                                                    ))
+                                                }
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
-                            </div>
+                                )
+                            }
+                            {
+                                productCart.length > 0 && (
+                                    <div className="row">
+                                        <div className="col-lg-6 col-md-6 col-sm-6">
+                                            <div className="continue__btn">
+                                                <Link to="/shop">Continue Shopping</Link>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-6">
+                                            <div className="continue__btn update__btn">
+                                                <Link to="/"><BsArrowRepeat /> Update cart</Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            }
                         </div>
-                        <div class="col-lg-4">
-                            <div class="cart__discount">
-                                <h6>Discount codes</h6>
-                                <form action="#">
-                                    <input type="text" placeholder="Coupon code"/>
-                                    <button type="submit">Apply</button>
-                                </form>
-                            </div>
-                            <div class="cart__total">
-                                <h6>Cart total</h6>
-                                <ul>
-                                    <li>Subtotal <span><PriceComponent price='4900000'/></span></li>
-                                    <li>Total <span><PriceComponent price='4900000'/></span></li>
-                                </ul>
-                                <a href="#" class="primary-btn">Proceed to checkout</a>
-                            </div>
+                        <div className="col-lg-4">
+                            {
+                                productCart.length > 0 && (
+                                    <>
+                                        <div className="cart__discount">
+                                            <h6>Discount codes</h6>
+                                            <form action="#">
+                                                <input type="text" placeholder="Coupon code" />
+                                                <button type="submit">Apply</button>
+                                            </form>
+                                        </div>
+                                        <div className="cart__total">
+                                            <h6>Cart total</h6>
+                                            <ul>
+                                                <li>Subtotal <span><PriceComponent price={totalPrice} /></span></li>
+                                                <li>Total <span><PriceComponent price={totalPrice} /></span></li>
+                                            </ul>
+                                            <Link to='/checkOut' className="primary-btn">Proceed to checkout</Link>
+                                        </div>
+                                    </>
+                                )
+                            }
                         </div>
                     </div>
                 </div>

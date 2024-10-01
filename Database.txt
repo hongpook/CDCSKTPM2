@@ -1,0 +1,135 @@
+CREATE TABLE users (
+    id SERIAL not null,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) PRIMARY KEY,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	img_user VARCHAR(100) NULL
+);
+select * from users
+
+CREATE TABLE blogs (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    image VARCHAR(255),
+    author_name VARCHAR(100) NOT NULL,
+    created_at Date DEFAULT CURRENT_TIMESTAMP,
+	content TEXT NOT NULL,
+    views INT DEFAULT 0,
+    FOREIGN KEY (author_name) REFERENCES users (email)
+);
+
+
+
+CREATE TABLE categories (
+    id SERIAL not null,
+    name varchar(255) PRIMARY KEY
+	
+);
+
+CREATE TABLE tags (
+    id SERIAL not null,
+    name varchar(50) PRIMARY KEY
+	
+);
+
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name CHAR(255)  		not null,
+    image VARCHAR(255)		not null,
+    price INT				not null,
+    sale INT 				null,
+    category VARCHAR(255)	not null,
+   	sku VARCHAR(50) NOT NULL DEFAULT md5(random()::text),
+    tags VARCHAR(255)		null,
+	imgDetail_1	varchar(225)	null,
+	imgDetail_2	varchar(225)	null,
+	imgDetail_3	varchar(225)	null,
+	descriptions text null,
+	color varchar(50) null,
+	product_info text null,
+	FOREIGN KEY (category) REFERENCES categories (name),
+	FOREIGN KEY (tags) REFERENCES tags (name)
+)
+
+/* INSERT INTO */
+
+/* Users */
+INSERT INTO users (username, email, password, Img_user)
+VALUES ('Hongpook', 'hongpook12@gmail.com', '000000', 'me.jpg');
+
+/* Blog s*/
+INSERT INTO blogs (name, image, author_name ,content , views)
+VALUES ('THE ADIDAS SAMBA SIZE GUIDE', 'samba_size_guide..jpg', 'hongpook12@gmail.com', 'This is a sample blog content.', 100);
+
+/* Tags */
+INSERT INTO tags (name)	
+VALUES
+    ('Originals'),
+    ('SportWear'),
+    ('Terrex'),
+	('Sustainability');
+
+
+/* categories */
+INSERT INTO categories (name)
+VALUES
+    ('Shoes'),
+    ('Shirt'),
+	('Ball'),
+	('Sneakers'),
+	('Boots'),
+	('Sandals'),
+	('T-shirts'),
+	('Hoodie'),
+	('Jackets'),
+	('Pants'),
+	('Sweatshirts'),
+	('Shorts'),
+	('Bags'),
+	('Caps');
+	
+
+
+/* Shoes */
+INSERT INTO products (name, image, price, sale, category, tags, imgDetail_1, imgDetail_2, imgDetail_3, descriptions, color, product_info)
+VALUES
+    ('Giày Samba OG White', 'Giay_Samba_OG_White.jpg', 2700000, 0, 'Shoes', 'Originals', 'Giay_Samba_OG_White1.jpg', 'Giay_Samba_OG_White2.jpg', 'Giay_Samba_OG_White3.jpg', 									'Ra đời trên sân bóng, giày Samba là biểu tượng kinh điển của phong cách đường phố. Phiên bản này trung thành với di sản, thể hiện qua thân giày bằng da mềm, dáng thấp, nhã nhặn, các chi tiết phủ ngoài bằng da lộn và đế gum, biến đôi giày trở thành item không thể thiếu trong tủ đồ của tất cả mọi người - cả trong và ngoài sân cỏ.', 'White', 'Dáng regular fit, Có dây giày, Thân giày bằng da cật với các chi tiết da lộn bụi bặm và nhũ vàng ánh kim, Lớp lót bằng da tổng hợp; Đế gum bằng cao su, Đế giữa bằng cao su tự nhiên'),
+    ('Giày Samba OG Black', 'Giay_Samba_OG_Black.jpg', 2700000, 0, 'Shoes', 'Originals', 'Giay_Samba_OG_Black1.jpg', 'Giay_Samba_OG_Black2.jpg', 'Giay_Samba_OG_Black3.jpg', 									'Ra đời trên sân bóng, giày Samba là biểu tượng kinh điển của phong cách đường phố. Phiên bản này trung thành với di sản, thể hiện qua thân giày bằng da mềm, dáng thấp, nhã nhặn, các chi tiết phủ ngoài bằng da lộn và đế gum, biến đôi giày trở thành item không thể thiếu trong tủ đồ của tất cả mọi người - cả trong và ngoài sân cỏ.', 'Black', 'Dáng regular fit, Có dây giày, Thân giày bằng da cật với các chi tiết da lộn bụi bặm và nhũ vàng ánh kim, Lớp lót bằng da tổng hợp; Đế gum bằng cao su, Đế giữa bằng cao su tự nhiên'),
+    ('Giày Samba OG Green x White', 'Giay_Samba_OG_GreenXWhite.jpg', 2700000, 0, 'Shoes', 'Originals', 'Giay_Samba_OG_GreenXWhite1.jpg', 'Giay_Samba_OG_GreenXWhite2.jpg', 'Giay_Samba_OG_GreenXWhite3.jpg', 	'Ra đời trên sân bóng, giày Samba là biểu tượng kinh điển của phong cách đường phố. Phiên bản này trung thành với di sản, thể hiện qua thân giày bằng da mềm, dáng thấp, nhã nhặn, các chi tiết phủ ngoài bằng da lộn và đế gum, biến đôi giày trở thành item không thể thiếu trong tủ đồ của tất cả mọi người - cả trong và ngoài sân cỏ.', 'Green/White', 'Dáng regular fit, Có dây giày, Thân giày bằng da cật với các chi tiết da lộn bụi bặm và nhũ vàng ánh kim, Lớp lót bằng da tổng hợp; Đế gum bằng cao su, Đế giữa bằng cao su tự nhiên'),
+	('Giày Samba OG Full White', 'Giay_Samba_OG_FullWhite.jpg', 2700000, 0, 'Shoes', 'Originals', 'Giay_Samba_OG_FullWhite1.jpg', 'Giay_Samba_OG_FullWhite2.jpg', 'Giay_Samba_OG_FullWhite3.jpg', 				'Ra đời trên sân bóng, giày Samba là biểu tượng kinh điển của phong cách đường phố. Phiên bản này trung thành với di sản, thể hiện qua thân giày bằng da mềm, dáng thấp, nhã nhặn, các chi tiết phủ ngoài bằng da lộn và đế gum, biến đôi giày trở thành item không thể thiếu trong tủ đồ của tất cả mọi người - cả trong và ngoài sân cỏ.', 'Full White', 'Dáng regular fit, Có dây giày, Thân giày bằng da cật với các chi tiết da lộn bụi bặm và nhũ vàng ánh kim, Lớp lót bằng da tổng hợp; Đế gum bằng cao su, Đế giữa bằng cao su tự nhiên'),
+	('Giày Samba OG Wonder White', 'Giay_Samba_OG_WonderWhite.jpg', 2700000, 0, 'Shoes', 'Originals', 'Giay_Samba_OG_WonderWhite1.jpg', 'Giay_Samba_OG_WonderWhite2.jpg', 'Giay_Samba_OG_WonderWhite3.jpg', 	'Ra đời trên sân bóng, giày Samba là biểu tượng kinh điển của phong cách đường phố. Phiên bản này trung thành với di sản, thể hiện qua thân giày bằng da mềm, dáng thấp, nhã nhặn, các chi tiết phủ ngoài bằng da lộn và đế gum, biến đôi giày trở thành item không thể thiếu trong tủ đồ của tất cả mọi người - cả trong và ngoài sân cỏ.', 'WonderWhite', 'Dáng regular fit, Có dây giày, Thân giày bằng da cật với các chi tiết da lộn bụi bặm và nhũ vàng ánh kim, Lớp lót bằng da tổng hợp; Đế gum bằng cao su, Đế giữa bằng cao su tự nhiên'),
+	('Giày Samba OG Red x White', 'Giay_Samba_OG_RedXWhite.jpg', 2700000, 0, 'Shoes', 'Originals', 'Giay_Samba_OG_RedXWhite1.jpg', 'Giay_Samba_OG_RedXWhite2.jpg', 'Giay_Samba_OG_RedXWhite3.jpg', 				'Ra đời trên sân bóng, giày Samba là biểu tượng kinh điển của phong cách đường phố. Phiên bản này trung thành với di sản, thể hiện qua thân giày bằng da mềm, dáng thấp, nhã nhặn, các chi tiết phủ ngoài bằng da lộn và đế gum, biến đôi giày trở thành item không thể thiếu trong tủ đồ của tất cả mọi người - cả trong và ngoài sân cỏ.', 'Red/White', 'Dáng regular fit, Có dây giày, Thân giày bằng da cật với các chi tiết da lộn bụi bặm và nhũ vàng ánh kim, Lớp lót bằng da tổng hợp; Đế gum bằng cao su, Đế giữa bằng cao su tự nhiên'),
+	('Giày Samba OG Black x White', 'Giay_Samba_OG_BlackXWhite.jpg', 2700000, 0, 'Shoes', 'Originals', 'Giay_Samba_OG_BlackXWhite1.jpg', 'Giay_Samba_OG_BlackXWhite2.jpg', 'Giay_Samba_OG_BlackXWhite3.jpg', 	'Ra đời trên sân bóng, giày Samba là biểu tượng kinh điển của phong cách đường phố. Phiên bản này trung thành với di sản, thể hiện qua thân giày bằng da mềm, dáng thấp, nhã nhặn, các chi tiết phủ ngoài bằng da lộn và đế gum, biến đôi giày trở thành item không thể thiếu trong tủ đồ của tất cả mọi người - cả trong và ngoài sân cỏ.', 'Black/White', 'Dáng regular fit, Có dây giày, Thân giày bằng da cật với các chi tiết da lộn bụi bặm và nhũ vàng ánh kim, Lớp lót bằng da tổng hợp; Đế gum bằng cao su, Đế giữa bằng cao su tự nhiên'),
+	('Giày Samba OG Brown', 'Giay_Samba_OG_Brown.jpg', 2700000, 0, 'Shoes', 'Originals', 'Giay_Samba_OG_Brown1.jpg', 'Giay_Samba_OG_Brown2.jpg', 'Giay_Samba_OG_Brown3.jpg', 									'Ra đời trên sân bóng, giày Samba là biểu tượng kinh điển của phong cách đường phố. Phiên bản này trung thành với di sản, thể hiện qua thân giày bằng da mềm, dáng thấp, nhã nhặn, các chi tiết phủ ngoài bằng da lộn và đế gum, biến đôi giày trở thành item không thể thiếu trong tủ đồ của tất cả mọi người - cả trong và ngoài sân cỏ.', 'Brown', 'Dáng regular fit, Có dây giày, Thân giày bằng da cật với các chi tiết da lộn bụi bặm và nhũ vàng ánh kim, Lớp lót bằng da tổng hợp; Đế gum bằng cao su, Đế giữa bằng cao su tự nhiên'),
+	('Giày Samba OG Navy', 'Giay_Samba_OG_Navy.jpg', 2700000, 0, 'Shoes', 'Originals', 'Giay_Samba_OG_Navy1.jpg', 'Giay_Samba_OG_Navy2.jpg', 'Giay_Samba_OG_Navy3.jpg', 										'Ra đời trên sân bóng, giày Samba là biểu tượng kinh điển của phong cách đường phố. Phiên bản này trung thành với di sản, thể hiện qua thân giày bằng da mềm, dáng thấp, nhã nhặn, các chi tiết phủ ngoài bằng da lộn và đế gum, biến đôi giày trở thành item không thể thiếu trong tủ đồ của tất cả mọi người - cả trong và ngoài sân cỏ.', 'Navy', 'Dáng regular fit, Có dây giày, Thân giày bằng da cật với các chi tiết da lộn bụi bặm và nhũ vàng ánh kim, Lớp lót bằng da tổng hợp; Đế gum bằng cao su, Đế giữa bằng cao su tự nhiên');
+
+/* Shirt */	
+INSERT INTO products (name, image, price, sale, category, tags, imgDetail_1, imgDetail_2, imgDetail_3, descriptions, color, product_info)
+VALUES
+    ('Áo đấu sân nhà đội tuyển Argentina 2024', 'AoDau_San_Nha_DTuyen_Argentina.jpg', 2200000, 0, 'Shirt', 'Terrex', 'AoDau_San_Nha_DTuyen_Argentina1.jpg', 'AoDau_San_Nha_DTuyen_Argentina2.jpg', 'AoDau_San_Nha_DTuyen_Argentina3.jpg', 'CHIẾC ÁO ĐẤU SÂN NHÀ ĐỘI TUYỂN ARGENTINA DÀNH CHO FAN, LÀM TỪ CHẤT LIỆU TÁI CHẾ. Phong cách kinh điển dành cho nhà vô địch thế giới. Từ những sọc kẻ trứ danh cho đến biểu tượng Mặt Trời tháng Năm, chiếc áo adidas này dành tặng cho fan hâm mộ trung thành mọi đặc điểm nhận diện mà bạn muốn thấy ở chiếc áo đấu sân nhà truyền thống của đội tuyển Argentina. Các điểm nhấn và ba ngôi sao màu vàng gold được tô điểm nhằm tôn vinh chiến công lừng danh ở Qatar. Với thiết kế thoải mái và đầy tự hào dành cho người hâm mộ, áo sử dụng công nghệ AEROREADY kiểm soát ẩm và huy hiệu thêu nổi ngập tràn niềm đam mê bóng đá. Sản phẩm này làm từ 100% chất liệu tái chế. Bằng cách tái sử dụng các chất liệu đã được tạo ra, chúng tôi góp phần giảm thiểu lãng phí và hạn chế phụ thuộc vào các nguồn tài nguyên hữu hạn, cũng như giảm phát thải từ các sản phẩm mà chúng tôi sản xuất.', 'White / Blue Burst', 'Dáng slim fit, Cổ tròn bo gân, Vải dệt interlock làm từ 100% polyester tái chế, AEROREADY, Các mảng phối lưới dưới cánh tay, hai bên và lưng dưới, Huy hiệu đội tuyển Argentina thêu nổi, Biểu tượng Mặt Trời tháng Năm dưới cổ áo sau'),
+    ('Áo đấu sân khách đội tuyển Tây Ban Nha 2024', 'AoDau_San_Khach_DTuyen_Tay_Ban_Nha.jpg', 2200000, 0, 'Shirt', 'Terrex', 'AoDau_San_Khach_DTuyen_Tay_Ban_Nha1.jpg', 'AoDau_San_Khach_DTuyen_Tay_Ban_Nha2.jpg', 'AoDau_San_Khach_DTuyen_Tay_Ban_Nha3.jpg', 'DÀNH CHO NGƯỜI HÂM MỘ, CHIẾC ÁO ĐẤU SÂN KHÁCH ĐỘI TUYỂN TÂY BAN NHA NÀY LÀM TỪ CHẤT LIỆU TÁI CHẾ. Bừng nở dưới ánh mặt trời. Lấy cảm hứng từ các biểu tượng của mùa hè Tây Ban Nha, chiếc áo đấu sân khách đội tuyển Tây Ban Nha đến từ adidas này mang đến nét mới mẻ cho niềm đam mê bóng đá trong bạn nhờ huy hiệu đội tuyển dệt nổi và biểu tượng hoa cẩm chướng. Nhằm mang đến sự thoải mái cho người hâm mộ, áo sử dụng chất vải mềm mại kết hợp cùng công nghệ AEROREADY kiểm soát ẩm. Sản phẩm này làm từ 100% chất liệu tái chế. Bằng cách tái sử dụng các chất liệu đã được tạo ra, chúng tôi góp phần giảm thiểu lãng phí và hạn chế phụ thuộc vào các nguồn tài nguyên hữu hạn, cũng như giảm phát thải từ các sản phẩm mà chúng tôi sản xuất.', 'Pulse Yellow / Halo Mint', 'Dáng slim fit, Cổ chữ V bo gân, Vải dệt interlock làm từ 100% polyester tái chế, AEROREADY, Các mảng phối lưới dưới cánh tay, hai bên và lưng dưới, Huy hiệu đội tuyển Tây Ban Nha dệt nổi, Biểu tượng hoa cẩm chướng dưới cổ áo sau'),
+    ('Áo đấu sân khách đội tuyển Argentina 2024', 'AoDau_San_Khach_DTuyen_Argentina.jpg', 2200000, 0, 'Shirt', 'Terrex', 'AoDau_San_Khach_DTuyen_Argentina1.jpg', 'AoDau_San_Khach_DTuyen_Argentina2.jpg', 'AoDau_San_Khach_DTuyen_Argentina3.jpg', 'CHIẾC ÁO ĐẤU SÂN KHÁCH ĐỘI TUYỂN ARGENTINA DÀNH CHO FAN, LÀM TỪ CHẤT LIỆU TÁI CHẾ. Khoe trọn sắc màu Argentina với chiếc áo đấu sân khách adidas lấy cảm hứng từ nền âm nhạc của quốc gia này. Với các chi tiết ánh kim và sắc xanh bắt mắt, chiếc áo đá bóng này có thiết kế giúp người hâm mộ luôn thoải mái nhờ các mảng phối lưới và công nghệ AEROREADY kiểm soát ẩm. Huy hiệu đội tuyển dệt nổi chiếm vị trí chủ đạo khi bạn cổ vũ đội tuyển yêu thích. Sản phẩm này làm từ 100% chất liệu tái chế. Bằng cách tái sử dụng các chất liệu đã được tạo ra, chúng tôi góp phần giảm thiểu lãng phí và hạn chế phụ thuộc vào các nguồn tài nguyên hữu hạn, cũng như giảm phát thải từ các sản phẩm mà chúng tôi sản xuất.', 'Blue', 'Dáng slim fit, Cổ chữ V bo gân,, Vải dệt interlock làm từ 100% polyester tái chế, AEROREADY, Phối lưới hai bên và trên tay áo, Huy hiệu đội tuyển Argentina dệt nổi, Biểu tượng Mặt Trời tháng Năm dưới cổ áo sau'),
+	('Áo đấu sân nhà Authentic đội tuyển Tây Ban Nha 2024', 'AoDau_San_Nha_Authentic_DTuyen_Tay_Ban_Nha.jpg', 3000000, 0, 'Shirt', 'Terrex', 'AoDau_San_Nha_Authentic_DTuyen_Tay_Ban_Nha1.jpg', 'AoDau_San_Nha_Authentic_DTuyen_Tay_Ban_Nha2.jpg', 'AoDau_San_Nha_Authentic_DTuyen_Tay_Ban_Nha3.jpg', 'CHIẾC ÁO ĐẤU SÂN NHÀ MANG SẮC MÀU TÂY BAN NHA, LÀM TỪ CHẤT LIỆU TÁI CHẾ. Tự hào mang trên mình lịch sử bóng đá lâu đời. Lấy cảm hứng từ vẻ đẹp của loài quốc hoa Tây Ban Nha và chuyển động mạnh mẽ, duyên dáng của vũ điệu flamenco, chiếc áo đấu sân nhà đội tuyển Tây Ban Nha đến từ adidas này có họa tiết graphic tiệp màu bắt mắt. Nhằm mang lại sự thoải mái và niềm tự hào cho cổ động viên, chiếc áo này kết hợp công nghệ AEROREADY kiểm soát ẩm với huy hiệu dệt nổi và biểu tượng hoa cẩm chướng. Sản phẩm này làm từ 100% chất liệu tái chế. Bằng cách tái sử dụng các chất liệu đã được tạo ra, chúng tôi góp phần giảm thiểu lãng phí và hạn chế phụ thuộc vào các nguồn tài nguyên hữu hạn, cũng như giảm phát thải từ các sản phẩm mà chúng tôi sản xuất.', 'Red', 'Dáng slim fit, Cổ tròn bo gân, Vải dệt interlock làm từ 100% polyester tái chế, AEROREADY, Các mảng phối lưới dưới cánh tay, hai bên và lưng dưới, Huy hiệu đội tuyển Tây Ban Nha dệt nổi, Biểu tượng hoa cẩm chướng dưới cổ áo sau'),
+	('Áo đấu sân nhà Authentic Real Madrid 23/24', 'AoDau_San_Nha_Authentic_Real_Madrid.jpg', 3000000, 0, 'Shirt', 'Terrex', 'AoDau_San_Nha_Authentic_Real_Madrid1.jpg', 'AoDau_San_Nha_Authentic_Real_Madrid2.jpg', 'AoDau_San_Nha_Authentic_Real_Madrid3.jpg', 'CHIẾC ÁO REAL MADRID CHUYÊN NGHIỆP VỚI CÁC CHI TIẾT VÀNG KIM VÀ THIẾT KẾ ĐẬM CHẤT DI SẢN. Phong cách truyền thống nay tô điểm ánh vàng kim với chiếc Áo Đấu Sân Nhà Authentic Real Madrid 23/24. Giữ nguyên thiết kế trắng tinh, bộ trang phục đầy ấn tượng tiếp tục kế thừa thiết kế mạnh mẽ, tạo nên chiếc áo đấu nhẹ nhàng, thanh thoát lừng danh trong lịch sử bóng đá huyền thoại. Trung thành với những thiết kế trước đó, các điểm nhấn vàng kim nay được tái hiện cùng với viền xanh navy. Họa tiết in chuyển nhiệt phủ toàn bộ được cập nhật tinh tế hơn trên nền trắng kinh điển, với kiểu dáng bóng đá mới cho phép bạn mang phong cách và sự thanh lịch của CLB ra khỏi sân bóng. Chất vải HEAT.RDY tăng cường lưu thông khí tối đa để bạn có được cảm giác mát mẻ — cùng huy hiệu thêu nổi và dòng chữ "¡Hala Madrid!" trên cổ áo thể hiện tâm thế chiến thắng của bạn.', 'White', 'Dáng slim fit, Cổ tròn bo gân, Vải jacquard làm từ 100% polyester tái chế, Các mảng phối hai bên: Vải lưới làm từ 100% polyester tái chế, HEAT.RDY, Viền tay áo bo gân, Vạt sau dài hơn, Huy hiệu Real Madrid in nhiệt, Sợi dệt có chứa 50% chất liệu Parley Ocean Plastic, Sản phẩm này có chứa tổng cộng tối thiểu 70% chất liệu tái chế'),
+	('Áo đấu sân nhà Authentic FC Bayern 23/24', 'AoDau_San_Nha_Authentic_FC_Bayern.jpg', 3000000, 0, 'Shirt', 'Terrex', 'AoDau_San_Nha_Authentic_FC_Bayern1.jpg', 'AoDau_San_Nha_Authentic_FC_Bayern2.jpg', 'AoDau_San_Nha_Authentic_FC_Bayern3.jpg', 'CHIẾC ÁO ĐẤU CHUYÊN DỤNG FC BAYERN PHONG CÁCH CỔ ĐIỂN CÙNG CÁC CHI TIẾT HIỆN ĐẠI. Là thiết kế cách tân cho mẫu áo đầu tiên của câu lạc bộ huyền thoại, Áo Đấu Sân Nhà Authentic FC Bayern là item tôn vinh thế hệ cầu thủ xuất sắc trong quá khứ. Bộ đồng phục đỏ trắng đầu tiên trong 30 năm là điểm nhấn hoài niệm mà mới mẻ cho đội bóng nổi tiếng nhờ lối chơi nhất quán. Với kiểu dáng ôm sát, chiếc áo đấu này được làm hoàn toàn từ vải jacquard 100% polyester tái chế cùng thiết kế cổ tròn bo gân cao cấp. Ẩn sau vẻ ngoài là công nghệ HEAT.RDY lưu thông khí tối đa giúp bạn cảm thấy mát mẻ — cho dù bạn chuẩn bị bước lên khán đài hay vào sân đấu. Khoác lên niềm tự hào sân nhà với huy hiệu "FC Bayern München" dập nổi trên viền tay áo bo gân và cả sau lưng, cùng huy hiệu ép nhiệt.', 'Red / White', 'Dáng slim fit, Cổ tròn bo gân, Vải jacquard làm từ 100% polyester tái chế, Các mảng phối hai bên: Vải lưới làm từ 100% polyester tái chế, HEAT.RDY, Dòng chữ "FC Bayern München" trên viền tay áo bo gân và sau lưng, Vạt sau dài hơn, Huy hiệu FC Bayern in nhiệt, Sợi dệt có chứa 50% chất liệu Parley Ocean Plastic, Sản phẩm này có chứa tổng cộng tối thiểu 70% chất liệu tái chế'),
+	('Áo đấu sân khách Manchester United 23/24', 'AoDau_San_Khach_Manchester_United.jpg', 2200000, 0, 'Shirt', 'Terrex', 'AoDau_San_Khach_Manchester_United1.jpg', 'AoDau_San_Khach_Manchester_United2.jpg', 'AoDau_San_Khach_Manchester_United3.jpg', 'CHIẾC ÁO ĐẤU MAN UTD MANG CẢM HỨNG LỊCH SỬ VÀ LÀM TỪ CHẤT LIỆU TÁI CHẾ. Cách đây một thế kỷ, các đường sọc dọc là điểm nhấn quen thuộc trên mẫu áo đấu sân khách Manchester United. Ở mùa giải 23/24, adidas tìm về DNA của CLB để tạo nên mẫu áo đấu bóng đá với thiết kế đúng chất Man Utd — ở cả trong và ngoài sân cỏ. Chiếc Áo Đấu Sân Khách Man United 23/24 mang lại cảm giác thoải mái cho người hâm mộ nhờ công nghệ AEROREADY thoát ẩm và các mảng phối lưới. Nổi bật trên các đường sọc ấy là huy hiệu CLB thêu nổi thể hiện lòng hâm mộ của bạn dành cho CLB huyền thoại. Làm từ 100% chất liệu tái chế, sản phẩm này đại diện cho một trong số rất nhiều các giải pháp của chúng tôi hướng tới Chấm Dứt Rác Thải Nhựa.', 'Green', ''),
+	('Áo đấu sân nhà đội tuyển Italy 2024', 'AoDau_San_Nha_DTuyen_Italy.jpg', 2200000, 0, 'Shirt', 'Terrex', 'AoDau_San_Nha_DTuyen_Italy1.jpg', 'AoDau_San_Nha_DTuyen_Italy2.jpg', 'AoDau_San_Nha_DTuyen_Italy3.jpg', 'CHIẾC ÁO ĐẤU SÂN NHÀ GIƯƠNG CAO MÀU CỜ SẮC ÁO, LÀM TỪ CHẤT LIỆU TÁI CHẾ. Đội tuyển quốc gia nổi tiếng với sắc áo thiên thanh, nhưng quốc kỳ của họ lại mang màu xanh lá, trắng và đỏ. Vậy nên chiếc áo đấu sân nhà Italy đến từ adidas này khoe trọn những gam màu trứ danh của lá cờ il Tricolore trên biểu tượng 3 Sọc, thể hiện trọn vẹn niềm tự hào dân tộc. Với thiết kế dành cho người hâm mộ, chiếc áo này sử dụng chất vải mềm mại và công nghệ AEROREADY kiểm soát ẩm. Huy hiệu dệt trên ngực áo càng tô đậm niềm đam mê bóng đá. Sản phẩm này làm từ 100% chất liệu tái chế. Bằng cách tái sử dụng các chất liệu đã được tạo ra, chúng tôi góp phần giảm thiểu lãng phí và hạn chế phụ thuộc vào các nguồn tài nguyên hữu hạn, cũng như giảm phát thải từ các sản phẩm mà chúng tôi sản xuất.', 'Blue', 'Dáng slim fit, Cổ tròn bo gân, Vải dệt interlock làm từ 100% polyester tái chế, AEROREADY, Các mảng phối lưới dưới cánh tay, hai bên và lưng dưới, Huy hiệu đội tuyển Italy dệt nổi'),
+	('Áo đấu sân khách đội tuyển Italy 2024', 'AoDau_San_Khach_DTuyen_Italy.jpg', 2200000, 0, 'Shirt', 'Terrex', 'AoDau_San_Khach_DTuyen_Italy1.jpg', 'AoDau_San_Khach_DTuyen_Italy2.jpg', 'AoDau_San_Khach_DTuyen_Italy3.jpg', 'CHIẾC ÁO ĐẤU SÂN KHÁCH ĐỘI TUYỂN ITALY DÀNH CHO CỔ ĐỘNG VIÊN LẤY CẢM HỨNG TỪ QUỐC KỲ, LÀM TỪ CHẤT LIỆU TÁI CHẾ. Chơi hết mình vì màu cờ sắc áo. Các gam màu đỏ, trắng và xanh của lá cờ il Tricolore hiện diện đầy tự hào trên thiết kế ấn tượng của chiếc áo đấu sân khách Italy đến từ adidas này. Và trên ngực áo là huy hiệu đội tuyển dệt nổi tô điểm cảm hứng bóng đá. Công nghệ AEROREADY kiểm soát ẩm đồng nghĩa rằng bạn có thể mặc chiếc áo này ra sân, nhưng mục đích chính của chiếc áo này là thổi bùng niềm tự hào của tất cả người hâm mộ. Sản phẩm này làm từ 100% chất liệu tái chế. Bằng cách tái sử dụng các chất liệu đã được tạo ra, chúng tôi góp phần giảm thiểu lãng phí và hạn chế phụ thuộc vào các nguồn tài nguyên hữu hạn, cũng như giảm phát thải từ các sản phẩm mà chúng tôi sản xuất.', 'White', 'Dáng slim fit, Cổ chữ V bo gân, Vải dệt interlock làm từ 100% polyester tái chế, AEROREADY, Các mảng phối lưới dưới cánh tay, hai bên và lưng dưới, Huy hiệu đội tuyển Italy dệt nổi');
+
+/* Ball */	
+INSERT INTO products (name, image, price, sale, category, tags, imgDetail_1, imgDetail_2, imgDetail_3, descriptions, color, product_info)
+VALUES
+    ('Bóng đấu vòng loại trực tiếp UCl Pro 23/24', 'Bong_Dau_Vong_Loai_Truc_Tiep_UCL_Pro.jpg', 2640000, 0, 'Ball', 'Terrex', 'Bong_Dau_Vong_Loai_Truc_Tiep_UCL_Pro1.jpg', 'Bong_Dau_Vong_Loai_Truc_Tiep_UCL_Pro2.jpg', 'Bong_Dau_Vong_Loai_Truc_Tiep_UCL_Pro3.jpg', 'QUẢ BÓNG THI ĐẤU CHÍNH THỨC ĐƯỢC SỬ DỤNG CHO CÁC VÒNG ĐẤU LOẠI TRỰC TIẾP UCL 23/24. Niềm tự hào London. Họa tiết graphic hình sư tử sống động trên trái bóng adidas UCL Pro này tôn vinh biểu tượng mạnh mẽ, dũng cảm và oai hùng của đội chủ nhà. Trái bóng được sử dụng xuyên suốt vòng đấu loại trực tiếp của UEFA Champions League 23/24, được thiết kế cho những trận đấu lớn với kết cấu ép nhiệt không đường may, cùng ruột bóng cao cấp bằng cao su butyl. Hãy mang trái bóng này ra sân bóng và thể hiện niềm tự hào vô địch.', 'White / Glow Blue / Flash Orange', 'Vỏ bóng làm từ 61% polyurethane, 30% polyester tái chế, 9% ramie, Kết cấu ép nhiệt không đường may, Ruột bóng bằng cao su butyl cao cấp, Chứng nhận FIFA Quality Pro, In logo UEFA Champions League, Cần bơm hơi'),
+    ('Bóng đấu vòng loại UWCL Pro 23/24', 'Bong_Dau_Vong_Loai_UWCL_Pro.jpg', 3300000, 0, 'Ball', 'Terrex', 'Bong_Dau_Vong_Loai_UWCL_Pro1.jpg', 'Bong_Dau_Vong_Loai_UWCL_Pro2.jpg', 'Bong_Dau_Vong_Loai_UWCL_Pro3.jpg', 'QUẢ BÓNG ĐẠT CHUẨN FIFA VỚI LOGO UEFA CHAMPIONS LEAGUE. Trái bóng năm sao cho phong độ hoàn hảo. Đạt chứng nhận FIFA Quality Pro chính thức, trái Bóng Đấu Vòng Loại UWCL Pro 23/24 có những chi tiết cao cấp và công nghệ đột phá trong DNA, là lựa chọn tối ưu cho các cầu thủ muốn nâng tầm cuộc chơi. Khai phá tinh thần chiến đấu bất bại. Trái bóng thi đấu này có kết cấu không đường may để đảm bảo thành tích vượt trội trên sân cỏ. Bề mặt ép nhiệt cho quỹ đạo dễ nắm bắt hơn và khả năng chạm bóng tốt hơn, cùng ruột bóng bằng cao su butyl giúp giảm thiểu số lần bơm hơi. Với thiết kế kinh điển, logo UEFA Champions League khẳng định tính xác thực, tôn vinh tinh hoa bóng đá.', 'White / Black / Solar Red', 'Vỏ bóng làm từ 61% polyurethane, 30% polyester tái chế, 9% ramie, Kết cấu ép nhiệt không đường may, Ruột bóng bằng cao su butyl, Chứng nhận FIFA Quality Pro, In logo UEFA Champions League, Cần bơm hơi');
+
+
+select * from Tags
+select * from Categories
+select * from Products 
+	
+/*get products by name for tags*/
+SELECT * FROM products WHERE tags = (SELECT name FROM tags WHERE name = 'Terrex');
+
+/*get products by name for category*/
+SELECT * FROM products WHERE category = (SELECT name FROM categories WHERE name = 'Ball');

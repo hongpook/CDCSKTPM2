@@ -9,10 +9,15 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import CutContentCommponent from "component/cutContent";
 import Pagination from "component/Pagination_relatedProduct";
+import { useSelector, useDispatch } from 'react-redux'
+import { addToCart, removeCart } from '../../../redux/slice/cartItem'
 
 function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const productCart = useSelector((state) => state.cart.CartArr)
+  const dispatch = useDispatch()
+
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -261,7 +266,7 @@ function ProductDetail() {
                             <input type="text" value="1" />
                           </div>
                         </div>
-                        <a href="#" class="primary-btn">
+                        <a class="primary-btn" onClick={()=> dispatch(addToCart(product))}>
                           add to cart
                         </a>
                       </div>
@@ -387,10 +392,12 @@ function ProductDetail() {
               <div class="row"></div>
             </div>
           </section>
+          
         </>
       ) : (
         <p>Loading...</p>
       )}
+      
     </div>
   );
 }

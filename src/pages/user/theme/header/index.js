@@ -6,9 +6,10 @@ import logo from "../../../../assets/imgs/Adidas_Logo.png";
 import cart from "../../../../assets/imgs/imgIcon/cart.png";
 import heart from "../../../../assets/imgs/imgIcon/heart.png";
 import search from "../../../../assets/imgs/imgIcon/search.png";
+import { useSelector, useDispatch } from 'react-redux'
 
 const Header = () =>{
-
+    const productCart = useSelector((state) => state.cart.CartArr)
     return (
         <div className='header '>
 
@@ -84,6 +85,7 @@ const Header = () =>{
                             </Link>
                             <Link to="/cart">
                                 <img src={cart} alt=""/>
+                                {productCart.length}
                             </Link>
                             <div class="price"></div>
                         </div>
